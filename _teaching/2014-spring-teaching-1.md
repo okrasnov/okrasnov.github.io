@@ -1,14 +1,12 @@
-Sorry! We are still under construction!
-
 
 ---
-title: ""
+title: "MRRS"
 collection: teaching
-type: ""
+type: "MSc"
 permalink: /teaching/2014-spring-teaching-1
-venue: ""
-date: 
-location: ""
+venue: "EEMCS, TU Delft"
+date: 2019-2020 Q3
+location: "TU Delft"
 ---
 
 Sorry! We are still under construction!

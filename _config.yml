@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "O.Krasnov / GitHub pages"
 title_separator          : "-"
 name                     : &name "O.Krasnov"
-description              : &description "personal description"
+description              : &description "Research scientist at TU Delft"
 url                      : https://okrasnov.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "okrasnov/okrasnov.github.io"
@@ -57,7 +57,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter
+  username               : #&twitter
 facebook:
   username               :
   app_id                 :

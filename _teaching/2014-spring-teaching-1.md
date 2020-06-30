@@ -1,4 +1,3 @@
-
 ---
 title: "MRRS"
 collection: teaching

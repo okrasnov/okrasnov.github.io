@@ -9,5 +9,6 @@ redirect_from:
 ---
 
 ## Research Scientist & Ass. Prof. at Delft University of Technology ##
-### Microwave Sensing, Signals and Systems (MS3) group  
-(former MTSR/IRCTR) ###
+### Microwave Sensing, Signals and Systems (MS3) group  ###
+### (former MTSR/IRCTR) ###
+

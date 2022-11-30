@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule6_1.js'></script>
+<script type='text/javascript' src='../math-complex.js'></script>
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+</style>
+<!-- #slider1 .ui-slider-handle { color:teal; border-color: teal; background:teal; } -->
+<!-- #slider1 .ui-slider-range { color:teal; border-color: teal; background:teal; } -->
+
+</head>
+
+<!-- below onLoad stuff makes the radio button reset. -->
+<body>
+
+
+<div id="messages"></div>
+
+ <div style="font-size:large; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+&nbsp; <strong>Code 6.1
+      <span style="color:red; float:right;">
+Emissivity of Homogeneous Medium with Planar Boundary&nbsp;</span>
+
+</strong>
+</div>
+
+  <div id="wrapper" >
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:570px;">
+      <div  id="dataEntries" width="550">
+
+<br/>
+&nbsp;This module computes the 
+emissivity of a planar dielectric medium viewed from air (with
+<span xml:lang="el" lang="el">ϵ</span><sub>1</sub> = 1) at incidence angle
+&theta;<sub>1</sub>, for both h and v
+polarizations.
+<br/>
+&nbsp;
+<span xml:lang="el" lang="el">ϵ</span><sub>2</sub>=
+<span xml:lang="el" lang="el">ϵ</span><sub>2</sub>' -j 
+<span xml:lang="el" lang="el">ϵ</span><sub>2</sub>''
+
+<br/>
+<br/>
+<br/>
+<!--
+&nbsp;matlab
+code: <a href="../combined_codes/module6_1.m">module6_1.m</a>
+-->
+
+<br/>
+
+<center>
+<img src="fig6_17.jpg" alt="" width=300>
+</center>
+
+<div id="form">
+   <br>
+<br/>
+
+   <span>&nbsp;Real Part: <span xml:lang="el" lang="el">ϵ</span><sub>2</sub>':  </span>
+&nbsp;&nbsp;&nbsp;<div id="slider3" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="real_eps2" name="real_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Imag Part: <span xml:lang="el" lang="el">ϵ</span><sub>2</sub>'':  </span>
+&nbsp;<div id="slider4" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="imag_eps2" name="imag_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+<!-- filedset here -->
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:570px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle">Emissivity from Planar Dielectric</td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner" id="yAxisLabel">Emissivity</div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule6_1" class="plot" style="width:500px;height:500px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Angle, Degrees</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          </tr>
+        <tr>
+          <td></td>
+         </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+
+</body>
+</html>

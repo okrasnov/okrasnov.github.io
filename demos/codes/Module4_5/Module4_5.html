@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule4_5.js'></script>
+<script type='text/javascript' src='../math-complex.js'></script>
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+</style>
+<!-- #slider1 .ui-slider-handle { color:teal; border-color: teal; background:teal; } -->
+<!-- #slider1 .ui-slider-range { color:teal; border-color: teal; background:teal; } -->
+
+</head>
+
+<body>
+
+
+<div id="messages"></div>
+
+ <div style="font-size:large; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+&nbsp; <strong>Code 4.5
+      <span style="color:red; float:right;">Relative Dielectric
+      Constant of Dry Snow&nbsp;</span>
+
+</strong>
+</div>
+
+  <div id="wrapper" >
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:770px;">
+      <div  id="dataEntries" width="550">
+
+<br/>
+&nbsp;This module computes the 
+real and imaginary parts of the relative dielectric constant of pure snow at any temperature
+between -40C and 0C, and for any ice volume fraction, for frequencies between 0.8 and 37 GHz.
+<br/>
+<br/>
+<!--
+&nbsp;matlab
+code: <a href="../combined_codes/module4_5.m">module4_5.m</a>
+-->
+
+<br/>
+
+<div id="form">
+   <br>
+<span>&nbsp;Temperature (C):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+<div id="slider1" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="temp1" name="temp1Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+   <br>
+   <br>
+<span>&nbsp;Ice Volume Fraction:&nbsp;&nbsp;  </span>
+<div id="slider2" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="vi" name="viVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:770px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle">Dielectric Constant of Dry Snow</td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner"
+              id="yAxisLabel">Real Part</div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule4_5r" class="plot" style="width:500px;height:325px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Frequency, GHz</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          </tr>
+
+      </tbody></table>
+
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner"
+              id="yAxisLabel">Imagtinary Part</div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule4_5i" class="plot" style="width:500px;height:325px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Frequency, GHz</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          </tr>
+
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule12_7.js'></script>
+<script type='text/javascript' src='../math-complex.js'></script>
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+#slider5 .ui-slider-handle {  background:#00EEEE; }
+#slider6 .ui-slider-handle {  background:#00EEEE; }
+</style>
+<!-- #slider1 .ui-slider-handle { color:teal; border-color: teal; background:teal; } -->
+<!-- #slider1 .ui-slider-range { color:teal; border-color: teal; background:teal; } -->
+
+</head >
+
+<!-- below onLoad stuff makes the radio button reset. -->
+<body onLoad="doinit()">
+
+
+<div id="messages"></div>
+
+ <div style="font-size:large; height:30px; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+&nbsp; <strong>Code 12.7
+      <span style="color:red; float:right;">Coherent Emissivity of a Two-Layer Composite&nbsp;</span>
+</strong>
+</div>
+
+  <div id="wrapper" >
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:700px;">
+      <div  id="dataEntries" width="550">
+
+<br/>
+&nbsp;This module computes the emissivity of a 
+perfectly homogeneous layer (such as ice or oil) above another
+homogeneous medium, bounded by perfectly smooth planar surfaces.
+The dielectric constant of each layer can be specified, 
+ <span xml:lang="el" lang="el">ϵ</span> = 
+<span xml:lang="el" lang="el">ϵ</span>' -j 
+<span xml:lang="el" lang="el">ϵ</span>'',
+as well as the thickness of the top layer.
+<br/>
+&nbsp;
+
+<br/>
+<!--
+&nbsp;matlab code: <a href="../combined_codes/module12_7.m">module12_7.m</a>
+-->
+
+<br/>
+
+<div id="form">
+<br/>
+   <span>&nbsp;Frequency: </span>
+&nbsp;<div id="slider4" style="width:328px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="freq" name="freqVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+&nbsp;Top Layer Properties:<br/>
+   <fieldset style="text-align:left;">
+<span>&nbsp;Real Part: <span xml:lang="el" lang="el">ϵ</span><sub>t</sub>':  </span>
+&nbsp;&nbsp;&nbsp;<div id="slider1" style="width:285px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="real_eps1" name="real_eps1Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Imag Part: <span xml:lang="el" lang="el">ϵ</span><sub>t</sub>'':  </span>
+&nbsp;<div id="slider2" style="width:285px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="imag_eps1" name="imag_eps1Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+   <span id="azscat">&nbsp;Thickness (m): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+&nbsp;<div id="slider3" style="width:215px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="thickness" name="thicknessVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+</fieldset>
+<br>
+&nbsp;Bottom Medium Properties:<br/>
+   <fieldset style="text-align:left;">
+<span>&nbsp;Real Part: <span xml:lang="el" lang="el">ϵ</span><sub>b</sub>':  </span>
+&nbsp;&nbsp;&nbsp;<div id="slider5" style="width:280px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="real_eps2" name="real_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Imag Part: <span xml:lang="el" lang="el">ϵ</span><sub>b</sub>'':  </span>
+&nbsp;<div id="slider6" style="width:280px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="imag_eps2" name="imag_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+</fieldset>
+
+
+
+
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:700px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle"><br/>Emissivity</td>
+        </tr><tr>
+	  <th></th>
+	  <td id="debug"><br/></td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner"
+              id="yAxisLabel">Emissivity</div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule12_7" class="plot"
+                 style="width:500px;height:500px">
+            </div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Incidence Angle, degrees</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>&nbsp;&nbsp; x-axis Choice:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <fieldset style="text-align:left;">
+<input name="xaxis" id="incidence" value="incidence" checked="checked" type="radio">
+   <label for="incidence">Incidence Angle</label><br>
+   <input name="xaxis" id="azimuth" value="azimuth" type="radio">
+   <label for="azimuth">Thickness</label><br>
+</fieldset></td>
+          </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+</body>
+</html>

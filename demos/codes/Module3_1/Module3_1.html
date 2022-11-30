@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule3_1.js'></script>
+
+<script type='text/javascript' src='../math-complex.js'></script>
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+#slider5 .ui-slider-handle {  background:#00EEEE; }
+#slider6 .ui-slider-handle {  background:#00EEEE; }
+@font-face {
+    font-family: droidserif_font;
+    src: local(droidserif_font), url('../DroidSerif.ttf') format('opentype');
+}
+table, tr, td {
+        font-family:droidserif_font;
+}
+
+</style>
+
+</head>
+
+<body  onLoad="rinit();">
+
+
+<div id="messages"></div>
+
+
+ <div style="font-size:large; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+
+&nbsp; <strong>Code 3.1
+<span style="color:red; float:right;">Array Factor for Uniformly Spaced Antenna Array &nbsp;
+</span></strong>
+</div>
+
+ 
+ 
+  <div id="wrapper">
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:700px;">
+      <div style="height: auto;" id="dataEntries" width="550">
+<div id="form">
+
+
+<br/>
+&nbsp;This module computes the array factor as defined by Eq. (3.86) for an
+N-element uniformly spaced array. 
+We provide 2 cases: 1. All the phases are set to zero, and the user can
+set the amplitudes.
+2. All the amplitudes are set to one, and the user can set the phases.
+The spacing is specified by the user in wavelengths.
+<br/>
+<br/>
+<!--
+&nbsp;matlab
+code: <a href="../combined_codes/module3_1.m">module3_1.m</a>
+-->
+<br/>
+<br/>
+<center>
+<img src="3-21a_big.png" alt="" width=300>
+</center>
+
+
+
+   <br>
+<span id="element1">Element 1 Phase (deg): &nbsp; &nbsp; </span>
+<div id="slider1" style="width:230px; display:inline-block;"></div>
+&nbsp; &nbsp;<input id="amp1" name="amp11Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span id="element2">Element 2 Phase (deg): &nbsp; &nbsp; </span>
+<div id="slider2" style="width:230px; display:inline-block;"></div>
+&nbsp; &nbsp;<input id="amp2" name="amp2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span id="element3">Element 3 Phase (deg):&nbsp; &nbsp;&nbsp;  </span>
+<div id="slider3" style="width:230px; display:inline-block;"></div>
+&nbsp; &nbsp;<input id="amp3" name="amp3Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span id="element4">Element 4 Phase (deg): &nbsp; &nbsp; </span>
+<div id="slider4" style="width:230px; display:inline-block;"></div>
+&nbsp; &nbsp;<input id="amp4" name="amp4Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span id="element5">Element 5 Phase (deg):&nbsp; &nbsp;&nbsp;  </span>
+<div id="slider5" style="width:230px; display:inline-block;"></div>
+&nbsp; &nbsp;<input id="amp5" name="amp5Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>Element Spacing, wavelengths: &nbsp; </span>
+<div id="slider6" style="width:172px; display:inline-block;"></div>
+&nbsp; &nbsp;<input id="d" name="dVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:700px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+          <br/><br/>
+	  <td id="plotTitle">Array Factor</td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner" id="yAxisLabel">Normalized Array Factor (dB)</div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule3_1" class="plot" style="width:500px;height:450px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">              
+            <font size="+2" style="color:red; position:relative; left:-36px;">&uarr; </font>
+            Angle, degrees
+            <font size="+2" style="color:red; position:relative; left:58px;">&uarr; </font>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td><font style="color:red">Broadside backward &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+          Broadside forward</font></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>    <br/><br/> <fieldset  style="text-align:left;">
+<input name="quant" id="amplitude" value="amplitude" checked="checked" type="radio">
+   <label for="amplitude">Specify Antenna Amplitudes (phases=0)</label><br>
+   <input name="quant" id="phase" value="phase" type="radio">
+   <label for="phase">Specify Antenna Phases (amplitudes=1)</label><br>
+</fieldset></td>
+          </tr>      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+</body>
+</html>

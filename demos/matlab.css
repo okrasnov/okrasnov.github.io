@@ -1,0 +1,251 @@
+body {
+	margin: 30px 0 20px 0;
+	padding: 1em;
+	background-color: #262396;
+
+	text-align: justify;
+	line-height: 20px;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #4C4C4C;
+}
+
+h1, h2, h3 {
+	padding: 0;
+	margin: 0;
+	color: #000000;
+}
+
+strong {
+	color: #000000;
+}
+
+p, ul, ol {
+	margin-bottom: 1.5em;
+}
+
+ul {
+	margin: 0px;
+	padding: 0;
+}
+
+a {
+	color: #FF0909;
+	text-decoration: none;
+	font-size: 13pt;
+	font-family: 'PT Serif', serif;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #931919;
+}
+
+#content-right strong{
+	font-size: 13pt;
+}
+
+#content-right h2 {
+	font-size: 20pt;
+	color: red;
+}
+
+.blackLabel {
+	color: black;
+}
+
+.redLabel {
+	color: red;
+}
+
+
+.rightLabel {
+	font-family:Times;
+	font-size:20pt;
+	font-weight: 550;
+	padding-bottom: 2em;
+	
+}
+
+#content-right a.red {
+	display:inline-block;
+ 	text-align: left;
+	color: #FF0000;
+	text-decoration: none;
+	font-family: 'PT Serif', serif;
+ }
+
+
+.rightList a {
+	display:inline-block;
+ 	padding:0.5em 1em;
+ 	text-align: left;
+	color: #000000;
+	font-size:16pt;
+	text-decoration: none;
+	font-family: 'PT Serif', serif;
+ }
+
+#content-right a {
+	display:inline-block;
+ 	padding:0.5em 1em;
+ 	text-align: left;
+	color: #000000;
+	text-decoration: none;
+	font-family: 'PT Serif', serif;
+ }
+
+ 
+#content-right a:hover, #content-right a.red:hover {
+	text-decoration: none;
+	color: #CC0000;
+}
+ 
+#content-right p, ul {
+	font-size:13pt;
+	font-family:PT Serif;
+	text-align:left;
+}
+
+#content-right {
+
+  margin-left: 27%;
+    
+	background: #CCF4FC;
+	border-radius: 0px 1.0em 1.0em 0em;
+	-webkit-box-shadow: 8px 8px 5px 2px rgba(50, 50, 50, 0.93);
+	-moz-box-shadow:    8px 8px 5px 2px rgba(50, 50, 50, 0.93);
+	box-shadow:         8px 8px 5px 2px rgba(50, 50, 50, 0.93);
+	padding: 1em 1em 0.5em 2em; 
+	width: 75%;
+
+	color: #000000;
+
+
+/*
+	background: #CCF4FC;
+	margin: 0px 10px 20px 0;
+	border-radius: 0px 15px 15px 0px;
+	border-width: 10px;
+	-webkit-box-shadow: 8px 8px 5px 2px rgba(50, 50, 50, 0.93);
+	-moz-box-shadow:    8px 8px 5px 2px rgba(50, 50, 50, 0.93);
+	box-shadow:         8px 8px 5px 2px rgba(50, 50, 50, 0.93);
+	padding: 0.5em;
+	width: 70%;
+	float:right;
+	color: #000000;
+*/
+}
+
+#content-left {
+
+		width: 25%;
+    float: left;
+		background: #E3DEBC;
+
+		margin: 0px 0px 20px 0px;
+		padding: 1em;
+		border-radius: 15px 0px 0px 10px;
+		border-width: 10px;
+
+/*
+	background: #E3DEBC;
+	margin: 0px 0px 20px 0px;
+	padding: 1em;
+	width: 25%;
+	float:left;
+	border-radius: 15px 0px 0px 15px;
+	border-width: 10px;
+*/
+	
+}
+
+
+
+#content-left ul {
+	margin: 15px 0 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+
+#content-left li {
+	padding-left: 10px;
+	background: url(http://mrs.eecs.umich.edu/bin/img04.gif) no-repeat left 50%;
+}
+
+
+#content-right ul {
+	margin: 0 3em;
+	padding: 0;
+	list-style: none;
+}
+
+#content-right li {
+	margin-bottom: 8px;
+	padding-left: 10px;
+	background: url(http://mrs.eecs.umich.edu/bin/img06.jpg) no-repeat 0 7px;
+	line-height: 17px;
+}
+
+
+#wrapper2 {
+	/*margin: 0px 0 10px 10px;
+	*/
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	background-color: #262396;
+	/*height: 100%;*/
+	border-width:  15px;
+	border-radius: 15px;
+	overflow: auto;
+/*	height: 1600px;*/
+/*	background: #2488E0; */
+
+}
+
+#wrapper {
+	margin: auto;
+	width: 80%;
+	background-color: #262396;
+	padding: 2em;
+}
+
+
+
+#header {
+	margin: 5px 0 50px 5px;
+	padding: 5px;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	font-family: Arial
+	font-weight: bold;
+	font-size:23pt;
+	text-align: center;
+}
+
+#footer {
+	margin: 5px 0 10px 5px;
+	padding 5px;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size:10pt;
+	text-align: center;
+	
+}
+
+
+.collapse{
+}
+.collapse + input{
+  display:none;
+}
+.collapse + input + *{
+  display:none;
+}
+.collapse+ input:checked + *{
+  display:block;
+}
+

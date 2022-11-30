@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule11_2.js'></script>
+<script type='text/javascript' src='../math-complex.js'></script>
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+#slider5 .ui-slider-handle {  background:#00EEEE; }
+#slider6 .ui-slider-handle {  background:#00EEEE; }
+#slider7 .ui-slider-handle {  background:#00EEEE; }
+#slider8 .ui-slider-handle {  background:#00EEEE; }
+#slider9 .ui-slider-handle {  background:#00EEEE; }
+#slider10 .ui-slider-handle {  background:#00EEEE; }
+#slider11 .ui-slider-handle {  background:#00EEEE; }
+</style>
+<!-- #slider1 .ui-slider-handle { color:teal; border-color: teal; background:teal; } -->
+<!-- #slider1 .ui-slider-range { color:teal; border-color: teal; background:teal; } -->
+
+</head>
+
+<!-- below onLoad stuff makes the radio button reset. -->
+<body>
+
+
+<div id="messages"></div>
+
+ <div style="font-size:large; height:30px; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+&nbsp; <strong>Code 11.2 <sup><font style="color:white">2</font></sup>
+      <span style="color:red; float:right;">S<sup>2</sup>RT/R Backscattering from Rayleigh Layer with Distinct Upper Boundary&nbsp;</span>
+</strong>
+</div>
+
+  <div id="wrapper" >
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:770px;">
+      <div  id="dataEntries" width="550">
+
+<br/>
+&nbsp;This module computes the backscattering coefficient,
+&sigma;<sup>0</sup>, 
+for a weakly scattering Rayleigh layer with albedo a &le;
+0.2.
+The layer is above a ground
+surface, and its upper and lower interfaces are characterized by
+the PRISM model with an exponential correlation function.
+The dielectric constant of the middle layer and ground surface can
+each be specified as: 
+ <span xml:lang="el" lang="el">ϵ</span> = 
+<span xml:lang="el" lang="el">ϵ</span>' -j 
+<span xml:lang="el" lang="el">ϵ</span>''.
+Other parameters that are specified are
+ the: rms height of the top and ground surfaces, frequency, and the
+single-scattering albedo, layer thickness, and the extinction
+coefficient of the middle layer.
+<br/>
+&nbsp;
+
+<br/>
+<!--
+&nbsp;matlab code: <a href="../combined_codes/module11_2.m">module11_2.m</a>
+-->
+
+<br/>
+
+<div id="form">
+<br/>
+
+
+
+&nbsp;   <span>Frequency (GHz): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+&nbsp;<div id="slider3" style="width:225px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="freq" name="freqVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+
+&nbsp; Bottom Surface:
+   <fieldset style="text-align:left;">
+
+<span>&nbsp;Real Part: <span xml:lang="el"
+                             lang="el">ϵ</span>':  </span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;<div id="slider1" style="width:215px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="real_eps1" name="real_eps1Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Imag Part: <span xml:lang="el"
+   lang="el">ϵ</span>'':  </span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;<div id="slider2" style="width:215px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="imag_eps1" name="imag_eps1Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;rms height (m): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+&nbsp;<div id="slider4" style="width:215px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="rmsheight" name="rmsheightVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br>
+
+</fieldset>
+
+<br/>
+&nbsp; Middle Layer Properties:
+   <fieldset style="text-align:left;">
+
+<span>&nbsp;Real Part: <span xml:lang="el"
+                             lang="el">ϵ</span>':  </span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;<div id="slider9" style="width:220px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="real_eps2" name="real_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Imag Part: <span xml:lang="el"
+   lang="el">ϵ</span>'':  </span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;<div id="slider10" style="width:220px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="imag_eps2" name="imag_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;rms height of top surface (m): &nbsp; </span>
+<div id="slider11" style="width:155px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="rmsheight2" name="rmsheight2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br>
+ <br>
+
+
+   <span>&nbsp;Thickness (m):
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;<div id="slider8" style="width:183px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="thickness" name="thicknessVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+<br><br>
+
+   <span>&nbsp;Single-scattering albedo: &nbsp;&nbsp;&nbsp; </span>
+<div id="slider6" style="width:185px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="albedo" name="albedoVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+<br><br>
+
+   <span>&nbsp;Extinction Coeff. (Np/m): &nbsp;&nbsp;&nbsp; </span>
+<div id="slider7" style="width:185px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="ext" name="extVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+<br>
+</fieldset>
+ <br>
+
+
+
+
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:770px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle"><br/>Backscatter Coefficient</td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner"
+              id="yAxisLabel">&sigma;<sup>0</sup>, dB</div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule11_2" class="plot"
+                 style="width:500px;height:500px">
+            </div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Incidence Angle, degrees</td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="debug"></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+</body>
+</html>

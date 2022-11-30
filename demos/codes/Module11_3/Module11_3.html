@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule11_3.js'></script>
+<script type='text/javascript' src='../math-complex.js'></script>
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+#slider5 .ui-slider-handle {  background:#00EEEE; }
+#slider6 .ui-slider-handle {  background:#00EEEE; }
+#slider7 .ui-slider-handle {  background:#00EEEE; }
+#slider8 .ui-slider-handle {  background:#00EEEE; }
+</style>
+<!-- #slider1 .ui-slider-handle { color:teal; border-color: teal; background:teal; } -->
+<!-- #slider1 .ui-slider-range { color:teal; border-color: teal; background:teal; } -->
+
+</head  >
+
+<!-- below onLoad stuff makes the radio button reset. -->
+<body  onLoad=doinit()>
+
+
+<div id="messages"></div>
+
+ <div style="font-size:large; height:30px; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+&nbsp; <strong>Code 11.3 
+      <span style="color:red; float:right;">Mie Extinction of Dry Snow&nbsp;</span>
+</strong>
+</div>
+
+  <div id="wrapper" >
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:650px;">
+      <div  id="dataEntries" width="550">
+
+<br/>
+&nbsp;This module computes 
+the Mie absorption, scattering, and extinction coefficients and the
+single scattering albedo of dry snow for specified snow
+density and ice particle radius.
+<br/>
+&nbsp;
+
+<br/>
+<!--
+&nbsp;matlab code: <a href="../combined_codes/module11_3.m">module11_3.m</a>
+-->
+
+<br/>
+
+<div id="form">
+<br/>
+<span>&nbsp;Snow Density (g/cm<sup>3</sup>):  </span>
+&nbsp;&nbsp;&nbsp;<div id="slider1" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="density" name="densityVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Ice Particle Radius (m): </span>
+&nbsp;<div id="slider2" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="radius" name="radiusVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Temperature (C): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+&nbsp;<div id="slider3" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="temp" name="tempVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+&nbsp; Quantity to Plot:
+<fieldset style="text-align:left;">
+<input name="quanta" id="absorption" value="on" checked="checked" type="checkbox">
+   <label for="absorption" style="color: rgb(255,10,10)">Absorption Coeff</label><br/>
+<input name="quants" id="scattering" value="on" type="checkbox">
+   <label for="scattering" style="color: rgb(10,255,10)">Scattering Coeff</label><br/>
+<input name="quante" id="extinction" value="on" type="checkbox">
+   <label for="extinction" style="color: rgb(10,10,255)">Extinction Coeff</label><br/>
+<input name="quantal" id="albedo" value="on" type="checkbox">
+   <label for="albedo">Single Scattering Albedo</label>
+</fieldset>
+
+
+
+
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:650px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle"><br/></td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner"
+              id="yAxisLabel"></div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule11_3" class="plot"
+                 style="width:500px;height:500px">
+            </div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Frequency, GHz</td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="debug"></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+</body>
+</html>

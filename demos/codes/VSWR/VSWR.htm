@@ -1,0 +1,81 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<META name="description" content="Voltage Standing Wave Ratio">
+<META name="keywords" content="Voltage,Standing,Wave,loss,dB,Ratio,Reflected,power">
+<script src="vswr.js" ></script>
+<title>Voltage Standing Wave Ratio</title>
+</head>
+
+<body bgcolor="#C0BBB7" link="#000000" vlink="#000000" onload="main()">
+
+<h1 align="center">Voltage Standing Wave Ratio</h1>
+
+<form method="post" name="VSWRFORM">
+
+<div align="center"><center>
+<table border="1" bordercolor="#808080" width="600" cellspacing="0" cellpadding="0" bgcolor="#C0C0C0">
+        <tr>
+            <td><font color="#000000" size="2" face="Trebuchet MS">VSWR</font></td>
+            <td colspan="2" bgcolor="#FFFFFF"><font face="Trebuchet MS" color="#000000" size="2"><input type="text" size="4"
+            name="VSWR" value="1.5" onchange="main()" style="FONT-FAMILY: Trebuchet MS">:1</font></td>
+        </tr>
+        <tr>
+            <td><font color="#000000" size="2" face="Trebuchet MS">Loss
+            in %</font></td>
+            <td colspan="2" bgcolor="#FFFFFF"><font face="Trebuchet MS" color="#000000" size="2"><input type="text" size="5"
+            name="LOSS_PERCENT"
+            onchange="OnChangeLossPercent();main()" style="FONT-FAMILY: Trebuchet MS"></font></td>
+        </tr>
+        <tr>
+            <td><font color="#000000" size="2" face="Trebuchet MS">Loss
+            in dB</font></td>
+            <td colspan="2" bgcolor="#FFFFFF"><font face="Trebuchet MS" color="#000000" size="2"><input type="text" size="5"
+            name="LOSS_DB" onchange="OnChangeLossdB();main()" style="FONT-FAMILY: Trebuchet MS"></font></td>
+        </tr>
+        <tr>
+            <td><font color="#000000" size="2" face="Trebuchet MS">Input
+            Power</font></td>
+            <td bgcolor="#FFFFFF"><font size="2"
+            face="Trebuchet MS" color="#000000"><input type="text" size="5"
+            name="InputPower" value="50"
+            onchange="Convert_To_Watt();main()" style="FONT-FAMILY: Trebuchet MS">dBm</font></td>
+            <td bgcolor="#FFFFFF"><font face="Trebuchet MS" color="#000000" size="2"><input
+            type="text" size="6" name="InputPowerW" value="100"
+            onchange="Convert_To_dBm();main()" style="FONT-FAMILY: Trebuchet MS">W</font></td>
+        </tr>
+        <tr>
+            <td><font color="#000000" size="2" face="Trebuchet MS">Reflected
+            Power</font></td>
+            <td bgcolor="#FFFFFF"><font size="2" face="Trebuchet MS" color="#000000"><input
+            type="text" size="5" name="ReflectedPower"
+            onchange="OnReflectedPowerdBm();OnChangeReflectedPower()" style="FONT-FAMILY: Trebuchet MS">dBm</font></td>
+            <td bgcolor="#FFFFFF"><font face="Trebuchet MS" color="#000000" size="2"><input type="text" size="6"
+            name="ReflectedPowerW"
+            onchange="OnChangeReflectedPower()" style="FONT-FAMILY: Trebuchet MS">W</font></td>
+        </tr>
+        <tr>
+            <td><font color="#000000" size="2" face="Trebuchet MS">Output
+            Power</font></td>
+            <td bgcolor="#FFFFFF"><font size="2" face="Trebuchet MS" color="#000000"><input
+            type="text" size="5" name="OutputPower"
+            onchange="OnOutputPowerdBm();OnChangeOutputPower()" style="FONT-FAMILY: Trebuchet MS">dBm</font></td>
+            <td bgcolor="#FFFFFF"><font face="Trebuchet MS" color="#000000" size="2"><input type="text" size="6"
+            name="OutputPowerW" onchange="OnChangeOutputPower()" style="FONT-FAMILY: Trebuchet MS">W</font></td>
+        </tr>
+    </table>
+
+
+</td>
+
+</table>
+</center>
+</div>
+</form>
+
+
+</body>
+</html>

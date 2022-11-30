@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Wind Turbines in the Netherlands</title>
+    <style>
+      html, body, #map-canvas {
+	margin:auto;
+	width:70%;
+        height: 100%; 
+        padding: 0px
+      }
+    </style>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+function initialize() {
+  var delft = new google.maps.LatLng(51.9985850,4.3746166);
+  var mapOptions = {
+    zoom: 10,
+    center: delft
+  }
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var ctaLayer = new google.maps.KmlLayer({
+    url: 'http://homepage.tudelft.nl/v0e47/WM1.htm'
+  });
+  ctaLayer.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+<h1> Wind Turbines in the Netherlands </h1>
+   <div id="map-canvas" style="height: 800px; width: 100%;"></div>
+<p>
+<p>
+<p><center><script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=NbUz&d=tFWCyqI8PN0QTFh4-nTwbdfByTttQXfq_sel44dRiNg"></script>
+</center></p>
+
+  </body>
+</html>
+

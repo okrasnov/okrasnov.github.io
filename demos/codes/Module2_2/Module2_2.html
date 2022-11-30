@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule2_2.js'></script>
+
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+#slider5 .ui-slider-handle {  background:#00EEEE; }
+#slider6 .ui-slider-handle {  background:#00EEEE; }
+</style>
+
+</head>
+
+
+<body onLoad="document.getElementById('alpha').checked = true;document.getElementById('low').checked = true; ">
+
+
+<div id="messages"></div>
+
+ <div style="font-size:large; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+
+&nbsp; <strong>EM Wave
+<span style="color:red; float:right;">Propagation Constant and Intrinsic Impedance &nbsp;
+</span></strong>
+</div>
+
+
+
+  <div id="wrapper">
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:520px;">
+      <div style="height: auto;" id="dataEntries" width="550" height="550">
+<div id="form">
+<br/>
+Code computes attenuation and phase coefficients and intrinsic
+ impedance of a lossy or lossless medium
+over a specified frequency range.
+
+<br/>
+&nbsp;
+<span xml:lang="el" lang="el">ϵ</span>=
+<span xml:lang="el" lang="el">ϵ</span>' -j 
+<span xml:lang="el" lang="el">ϵ</span>''
+<br/>
+
+
+
+<br/>
+<!--
+&nbsp;matlab
+code: <a href="../combined_codes/module2_2.m">module2_2.m</a>
+-->
+<br/>
+
+
+   <br>
+<span>&nbsp;Real Part: <span xml:lang="el" lang="el">ϵ</span>': &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+<div id="slider1" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="epsr" name="epsrVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+<span>&nbsp;Imag Part: <span xml:lang="el" lang="el">ϵ</span>'': &nbsp;&nbsp;&nbsp; </span>
+<div id="slider2" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="epsi" name="epsiVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Frequency Range:  </span>
+   <fieldset>
+<input name="range" id="low" value="low" checked="checked" type="radio">
+   <label for="low">1 - 10 GHz</label><br>
+   <input name="range" id="med" value="med" type="radio">
+   <label for="med">10-20 GHz</label><br>
+   <input name="range" id="hi" value="hi" type="radio">
+   <label for="hi">20-30 GHz</label><br>
+</fieldset>
+ <br><br/>
+
+   <fieldset>
+<input name="quant" id="alpha" value="alpha" checked="checked" type="radio">
+   <label for="alpha">Plot Attenuation coefficient</label><br>
+   <input name="quant" id="beta" value="beta" type="radio">
+   <label for="beta">Plot Phase coefficient</label><br>
+   <input name="quant" id="eta" value="eta" type="radio">
+   <label for="eta">Plot Magnitude of intrinsic impedance</label><br>
+   <input name="quant" id="phi" value="phi" type="radio">
+   <label for="phi">Plot Phase angle of intrinsic impedance</label><br>
+</fieldset></div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:520px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle"></td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner" id="yAxisLabel"></div>
+              </div>
+          </th>
+	  <td>
+            <div id="Module2_2" class="plot" style="width:500px;height:450px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Frequency, GHz</td>
+        </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+
+</body>
+</html>

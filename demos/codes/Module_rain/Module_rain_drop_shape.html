@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+  <link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+  <link rel='stylesheet' href='../plot.css' />
+
+  <script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+  <script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+  <script src="../numeric.min.js"></script>
+
+<script src="../plotly-latest.min.js"></script>
+  <!--<script type='text/javascript' src='../jquery.flot.js'></script>
+  <script type='text/javascript' src='../jquery.flot.JUMlib.js'></script>
+  <script type='text/javascript' src='../jquery.flot.spider.js'></script>-->
+  <script type='text/javascript' src='plotLibrary_drop_shape.js'></script>
+  <script type='text/javascript' src='widgetsModule_drop_shape.js'></script>
+  <style>
+    #slider1 .ui-slider-handle {
+      background: #00EEEE;
+    }
+  </style>
+  <!-- #slider1 .ui-slider-handle { color:teal; border-color: teal; background:teal; } -->
+  <!-- #slider1 .ui-slider-range { color:teal; border-color: teal; background:teal; } -->
+
+</head>
+
+<!-- below onLoad stuff makes the radio button reset. -->
+
+<body onLoad="document.getElementById('BC_model').checked = true">
+
+
+  <div id="messages"></div>
+
+  <div style="font-size:large; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+    &nbsp;
+    <strong>Rain characteristics: Drop Shapes
+      <span style="color:red; float:right;">Vertical slices of raindrop&nbsp;</span>
+
+    </strong>
+  </div>
+
+  <div id="wrapper">
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:640px;">
+      <div id="dataEntries" width="550">
+
+        <br/> &nbsp;This module computes shapes of raindrops for two models. &nbsp;
+        <br/><br/>
+        <center>
+        <img src="drops.png" alt="" width=400>
+        </center>
+        <br/><br/>
+
+        <div id="form">
+          <span>&nbsp;Raindrop Radius, mm: &nbsp;&nbsp;
+            <div id="slider1" style="width:230px; display:inline-block;"></div>
+            &nbsp;&nbsp;
+            <input id="RD_diameter" name="RD_diameterVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+            <!--<br/><br/><br/><br/>-->
+
+            <!-- filedset here -->
+        </div>
+      </div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; border-width:5px; border-color:blue; height:640px;">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody>
+          <tr>
+            <th></th>
+            <td id="plotTitle">Vertical Slice of Raindrop</td>
+          </tr>
+          <tr>
+            <th>
+              <div class="vertical-text">
+                <div class="vertical-text__inner" id="yAxisLabel">Vertical size, mm</div>
+              </div>
+            </th>
+            <td>
+              <div id="plotModule_drop_shape" class="plot" style="width:500px;height:500px"></div>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td id="xAxisLabel"><b>Horizontal size, mm</b></td>
+          </tr>
+          <!--<tr>
+            <td>&nbsp;</td>
+          </tr>-->
+          <tr>
+            <td></td>
+            <td>
+              <br/>
+
+              <fieldset style="text-align:left;">
+                <input name="quant" id="BC_model" value="BC_model" checked="checked" type="radio">
+                <label for="BC_model">Beard and Chuang model, 1987</label>
+                <br>
+                <input name="quant" id="PP_model" value="PP_model" type="radio">
+                <label for="PP_model">Pruppacher-Pitter model, 1971</label>
+                <br>
+              </fieldset>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+
+    </div>
+  </div>
+
+
+  <br/>Note: Once selected, the right and left arrow-keys can be used to move the sliders.
+
+</body>
+</html>

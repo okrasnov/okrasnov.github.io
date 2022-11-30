@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule2_4.js'></script>
+<script type='text/javascript' src='../math-complex.js'></script>
+
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+#slider5 .ui-slider-handle {  background:#00EEEE; }
+#slider6 .ui-slider-handle {  background:#00EEEE; }
+</style>
+
+</head>
+
+<body onLoad="document.getElementById('reflection_coeff').checked = true">
+
+
+<div id="messages"></div>
+
+
+ <div style="font-size:large; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+
+&nbsp; <strong>Code 2.4
+<span style="color:red; float:right;">Reflection by Two-Layer Composite &nbsp;
+</span></strong>
+</div>
+
+ 
+ 
+  <div id="wrapper">
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:720px;">
+      <div style="height: auto;" id="dataEntries" width="550">
+<div id="form">
+
+<br/>
+&nbsp;This module 
+computes the reflection properties of a two-layer composite with planar
+boundaries. 
+Medium 1 is air with <span xml:lang="el" lang="el">ϵ</span><sub>1</sub> =1.
+The incidence angle in medium 1, and the frequency in GHz  also are
+inputs.
+The reflection coefficient and reflectivity are
+ plotted against the thickness of the top layer, for both
+h and v polarizations.
+<br/>
+&nbsp;
+<span xml:lang="el" lang="el">ϵ</span><sub>2</sub>=
+<span xml:lang="el" lang="el">ϵ</span><sub>2</sub>' -j 
+<span xml:lang="el" lang="el">ϵ</span><sub>2</sub>''
+<br/>
+&nbsp;
+<span xml:lang="el" lang="el">ϵ</span><sub>3</sub>=
+<span xml:lang="el" lang="el">ϵ</span><sub>3</sub>' -j 
+<span xml:lang="el" lang="el">ϵ</span><sub>3</sub>''
+
+<br/>
+<br/>
+<!--
+&nbsp;matlab
+code: <a href="../combined_codes/module2_4.m">module2_4.m</a>
+-->
+
+<br/>
+<br/>
+<center>
+<img src="2-20_big.jpg" alt="" width=308>
+</center>
+
+
+   <br>
+<span>Real Part: <span xml:lang="el" lang="el">ϵ</span><sub>2</sub>':&nbsp;&nbsp;&nbsp;  </span>
+<div id="slider1" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="real_eps2" name="real_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+ <br><br>
+
+   <span>Imag Part: <span xml:lang="el" lang="el">ϵ</span><sub>2</sub>'':&nbsp;  </span>
+<div id="slider2" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="imag_eps2" name="imag_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+ <br><br>
+
+   <span>Real Part: <span xml:lang="el" lang="el">ϵ</span><sub>3</sub>':&nbsp;&nbsp;&nbsp;  </span>
+<div id="slider3" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="real_eps3" name="real_eps3Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+ <br><br>
+
+   <span>Imag Part: <span xml:lang="el" lang="el">ϵ</span><sub>3</sub>'':&nbsp;  </span>
+<div id="slider4" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="imag_eps3" name="imag_eps3Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+ <br><br>
+
+   <span>Incidence Angle (deg): &nbsp; </span>
+<div id="slider5" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="incang" name="incangVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>Frequency (GHz):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+<div id="slider6" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="freq" name="freqVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:720px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle"></td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner" id="yAxisLabel"></div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule2_4" class="plot" style="width:500px;height:450px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Thickness of Middle Layer, meters</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>    <br/><br/> <fieldset  style="text-align:left;">
+<input name="quant" id="reflection_coeff" value="reflection_coeff" checked="checked" type="radio">
+   <label for="reflection_coeff">Plot Reflection Coefficient Magnitude</label><br>
+   <input name="quant" id="reflectivity" value="reflectivity" type="radio">
+   <label for="reflectivity">Plot Reflectivity</label><br>
+</fieldset></td>
+          </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+</body>
+</html>

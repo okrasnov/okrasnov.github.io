@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary_MP_01.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule_EMW_MP_01.js'></script>
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+</style>
+<!-- #slider1 .ui-slider-handle { color:teal; border-color: teal; background:teal; } -->
+<!-- #slider1 .ui-slider-range { color:teal; border-color: teal; background:teal; } -->
+
+</head>
+
+<!-- below onLoad stuff makes the radio button reset. -->
+<body>
+<div id="messages"></div>
+
+<div style="font-size:large; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+<strong>
+&nbsp;Code EMW MP-01. Propagation above flat Earth surface
+      <span style="color:red; float:right;">Relative Received Power as a function of the receiver antenna height&nbsp;</span>
+</strong>
+</div>
+
+<div id="wrapper" >
+  <div id="leftWrapper" style="padding-left:5px; border-style:solid; 
+        border-width:5px; border-color:blue; height:700px;">
+    <div  id="dataEntries" width="550">
+
+<p>&nbsp;This module computes the received power in received antenna position as
+a function of the received antenna height. The reflection coefficient from the
+surface assumed to be equal to -1.<br/>
+The power normalized in dB scale relatively to the free space porpagation case.</p>
+<br/>
+<!--
+&nbsp;matlab
+code: <a href="../combined_codes/module2_3.m">module2_3.m</a>
+-->
+
+<center>
+<img src="flat-earth-model01.png" alt="The model of EMW propagation above the flat Earth"
+title="The model of EMW propagation above the flat Earth" width=500>
+</center>
+
+<div id="form">
+  <br>
+  <span>&nbsp;Frequency, MHz: <br/>&nbsp;<br/>&nbsp;</span>
+  &nbsp;&nbsp;&nbsp;<div id="slider1" style="width:380px; display:inline-block;"></div>
+  &nbsp;&nbsp;<input id="frequency" name="frequencyVal" style="border: 2;border-style: inset;
+                                         background-color:#EEEEEE;
+                                         width:75px" type="text">
+  <br>
+<br>
+<span>&nbsp;Distance between transmitter and receiver antennas, m: <br/>&nbsp;<br/>&nbsp;</span>
+&nbsp;&nbsp;&nbsp;<div id="slider2" style="width:380px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="distance" name="distanceVal" style="border: 2;border-style: inset;
+                                       background-color:#EEEEEE;
+                                       width:75px" type="text">
+<br>
+<br>
+<span>&nbsp;Transmitter antenna height, m: <br/>&nbsp;<br/>&nbsp;</span>
+&nbsp;&nbsp;&nbsp;<div id="slider3" style="width:380px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="height_t" name="height_tVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br>
+ <br>
+ <span>&nbsp;Upper limit of the receiver antenna height, m: <br/>&nbsp;<br/>&nbsp;</span>
+ &nbsp;&nbsp;&nbsp;<div id="slider4" style="width:380px; display:inline-block;"></div>
+ &nbsp;&nbsp;<input id="height_rmax" name="height_rmaxVal" style="border: 2;border-style: inset;
+                                         background-color:#EEEEEE;
+                                         width:75px" type="text">
+
+<!-- filedset here -->
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:700px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle"></td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner" id="yAxisLabel"></div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule_EMW_MP_01" class="plot" style="width:500px;height:500px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Relative received power, dB</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          </tr>
+        <tr>
+          <td></td>
+          <td>
+<br/>
+<!--
+   <fieldset style="text-align:left;">
+<input name="quant" id="reflection_coeff" value="reflection_coeff" checked="checked" type="radio">
+   <label for="reflection_coeff">Plot reflection coefficient magnitude</label><br>
+   <input name="quant" id="reflectivity" value="reflectivity" type="radio">
+   <label for="reflectivity">Plot reflectivity</label><br>
+   <input name="quant" id="transmission_coeff" value="transmission_coeff" type="radio">
+   <label for="transmission_coeff">Plot transmission coefficient magnitude</label><br>
+   <input name="quant" id="transmissivity" value="transmissivity" type="radio">
+   <label for="transmissivity">Plot transmissivity</label><br>
+</fieldset>
+-->
+</td>
+          </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+
+<p align="right"><font size="2"><br/><br/>
+&copy; <em><a href="mailto:o.a.krasnov@tudelft.nl">O.Krasnov</a>, 
+<a href="http://radar.tudelft.nl" target="_blank">MS3</a>, 
+TU Delft, 18.03.2016</em>&nbsp;&nbsp;&nbsp;</font></p>
+    </div>
+  </div>
+
+<br/>&nbsp;<b>Note:</b> Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+</div>
+
+</body>
+</html>

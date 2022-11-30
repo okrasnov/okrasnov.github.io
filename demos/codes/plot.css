@@ -1,0 +1,103 @@
+/*
+body {
+	font: 20px/1.5 Arial, sans-serif;
+}
+*/
+
+.vertical-text {
+	display: inline-block;
+	overflow: hidden;
+	width: 2.0em;
+}
+.vertical-text__inner {
+	display: inline-block;
+	white-space: nowrap;
+	line-height: 2.0;
+
+	/*transform: translate(0,100%) rotate(-90deg);
+	transform-origin: 0 0;*/
+
+     -moz-transform: rotate(-90deg);  /* FF3.5+ */
+       -o-transform: rotate(-90deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90deg);  /* Saf3.1+, Chrome */
+      -ms-transform: rotate(-90deg);  /* IE9 */
+          transform: rotate(-90deg);
+}
+/* This element stretches the parent to be square
+   by using the mechanics of vertical margins  */
+
+
+.vertical-text__inner:after {
+	content: "";
+	display: block;
+	margin: -1.5em 0 100%;
+}
+
+
+#verticalLabelOLD2 {
+     -moz-transform: rotate(-90deg);  /* FF3.5+ */
+       -o-transform: rotate(-90deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90deg);  /* Saf3.1+, Chrome */
+      -ms-transform: rotate(-90deg);  /* IE9 */
+          transform: rotate(-90deg);
+/* // THIS MATRIX IS FOR +20 degrees!!!   */
+             filter: progid:DXImageTransform.Microsoft.Matrix(/* IE6–IE9 */ 
+                     M11=0.9396926207859084, M12=-0.3420201433256687, M21=0.3420201433256687, M22=0.9396926207859084, sizingMethod='auto expand');
+               zoom: 1;
+}
+
+#verticalLabelOLD1 {
+   -moz-transform: rotate(-90deg) translate(0, 100%);
+   -moz-transform-origin: 0% 100%;
+   -o-transform: rotate(-90deg) translate(0, 100%);
+   -o-transform-origin: 0% 100%;
+   -webkit-transform: rotate(-90deg) translate(0, 100%);
+   -webkit-transform-origin: 0% 100%;
+   transform: rotate(-90deg) translate(0, 100%);
+   transform-origin: 0% 100%;
+   /* following works for IE: */
+   writing-mode: tb-rl;
+   filter: flipH flipV;
+
+    /*display: table-cell; */
+    /*vertical-align: middle; */
+    /*height: 50px; */
+    /*border: 1px solid red; */
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrapper {
+    display: inline-block;
+}
+
+#leftWrapper {
+    float: left;
+    border: 1px solid #9C9898;
+    width: 550px;
+}
+
+#rightWrapper {
+    float: right;
+    position: relative;
+    border: 1px solid #9C9898;
+    width: 600px;
+}
+
+.clear { clear: both;}
+
+#buttonWrapper {
+    position: absolute;
+    width: 30px;
+    top: 2px;
+    right: 750px;  /* 750 px from the right */
+}
+
+.scaler input[type = "button"] {
+    padding: 5px;
+    width: 30px;
+    margin: 0px 0px 2px 0px;
+}

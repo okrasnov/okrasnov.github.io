@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
+<head>
+ <meta http-equiv="Content-type" CONTENT="text/html;charset=iso-8859-1">
+ <title>Antenas - Helix - Javascript on-line calculator</title>
+ <style type="text/css">
+  h2.section {
+   width: 100%;
+   //background: url('/img/bg50.png');
+   border-right: solid #999999 1px;
+   border-bottom: solid #888888 1px;
+   padding-top: 1px;
+   padding-left: 2px;
+  }
+  table.simple {
+   width: 100%;
+   //background: url('/img/white40.png');
+   border-width: 0px;
+   border-spacing: 0px;
+   border-collapse: collapse;
+   border-style: solid;
+   border-color: gray;
+  }
+  table.simple td {
+   border-width: 1px;
+   padding: 2px;
+   border-color: black;
+   border-style: solid;
+  }
+ </style>
+  <meta name="author" content="">
+  <meta name="keywords" content=" antenna helix helicoidal calculator 
+   java javascript satellite meteorological design">
+  <meta name="description" content="Construction details for antenna. 
+   In this case the description and design info for a helix antenna. 
+   This antenna, which is very forgiving in tolerances, is an ideal 
+   feed for offset fed parabolic reflector.">
+ <link href="styles.css" rel="stylesheet" type="text/css">
+ <script src="helixcalc.js"> </script>
+</head>
+
+<body>
+<div class=spmain>
+  <h2 class="section">Helix antenna design and construction details</h2>
+  <p>
+  <h4 class="section">Input data (design requirements)</h4>
+
+  <form >
+   <table class="simple" cellspacing=1 >
+    <tr >
+    <td class="simple" >
+    Design frequency
+    </td>
+    <td class="simple" >
+    <INPUT type=text name=freq maxlength=10 size=10
+         value="1296" onchange="compute(this.form)">MHz
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Number of turns
+    </td>
+    <td class="simple" >
+    <INPUT type=text name=turns maxlength=4 size=4 value="26.0"
+	 onchange="compute(this.form)">
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Turn spacing
+    </td>
+    <td class="simple" >
+    <INPUT type=text name=step maxlength=6 size=6 value="0.23"
+	 onchange="compute(this.form)"> wavelengths
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    <br>
+    </td>
+    <td class="simple" >
+    <INPUT type=button onclick="compute(this.form)" value=Calculate
+            onchange="compute(this.form)">
+    </td>
+   </tr>
+  </table>
+  </form>
+
+  <h4 class="section">The results</h4>
+  <p>
+  <a href="helix6a.jpg"><img src="helix6a.jpg" align=left border=0></a>
+  Legend. The letters in the image are used in the table below.
+    <p>
+    To get a large version, click on the image.
+    <br clear=left>  <form id=results name=results>
+   <table class="simple" cellspacing=1 >
+    <tr >
+    <td class="simple" >
+    Wavelength
+    </td>
+    <td class="simple" >
+    <br>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=8 name=wavel value=""> mm
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Ideal diameter (internal)
+    </td>
+    <td class="simple" >
+    <b>D=</b>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=8 name=diam value=""> mm
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Gain
+    </td>
+    <td class="simple" >
+    <br>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=gain value=""> dBi
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Conductor diameter
+    </td>
+    <td class="simple" >
+    <b>d=</b>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=wdiam value=""> mm
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Winding step (between centers)
+    </td>
+    <td class="simple" >
+    <b>S=</b>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=7 name=stepmm value=""> mm
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Separation of the adapter section
+    </td>
+    <td class="simple" >
+    <b>a=</b>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=dist value=""> mm
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Total conductor length
+    </td>
+    <td class="simple" >
+    <br>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=lcond value=""> mm
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Minimum reflector diameter
+    </td>
+    <td class="simple" >
+    <b>R=</b>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=7 name=rdiam value=""> mm
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Total antenna length
+    </td>
+    <td class="simple" >
+    <b>L=</b>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=ltotal value=""> mm
+    </td>
+   </tr>
+  </table>
+
+  <h4 class="section">Design performance</h4>
+   <table class="simple" cellspacing=1 >
+    <tr >
+    <td class="simple" >
+    Bandwidth (@ -1dB)
+    </td>
+    <td class="simple" >
+    Fmax/Fmin:
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=fb1 value="">
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    <br>
+    </td>
+    <td class="simple" >
+    Fmax:
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=fb1max value="">MHz<br>
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    <br>
+    </td>
+    <td class="simple" >
+    Fmin:
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=fb1min value="">MHz
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Bandwidth (@ -3dB)
+    </td>
+    <td class="simple" >
+    Fmax/Fmin:
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=fb3 value="">
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    <br>
+    </td>
+    <td class="simple" >
+    Fmax:
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=fb3max value="">MHz
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    <br>
+    </td>
+    <td class="simple" >
+    Fmin:
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=fb3min value="">MHz
+    </td>
+</tr>
+<tr >
+    <td class="simple" >
+    Beam width (@ -3dB)
+    </td>
+    <td class="simple" >
+    <br>
+    </td>
+    <td class="simple" >
+    <INPUT type=text size=6 name=hpbw value=""> degrees
+    </td>
+   </tr>
+</table>
+</form>
+
+</div>
+
+</body>
+</html>

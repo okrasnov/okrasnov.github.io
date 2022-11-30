@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule2_3.js'></script>
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+</style>
+<!-- #slider1 .ui-slider-handle { color:teal; border-color: teal; background:teal; } -->
+<!-- #slider1 .ui-slider-range { color:teal; border-color: teal; background:teal; } -->
+
+</head>
+
+<!-- below onLoad stuff makes the radio button reset. -->
+<body onLoad="document.getElementById('reflection_coeff').checked = true">
+
+
+<div id="messages"></div>
+
+ <div style="font-size:large; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+&nbsp; <strong>Code 2.3
+      <span style="color:red; float:right;">Oblique Reflection and Transmission at Planar Boundary&nbsp;</span>
+
+</strong>
+</div>
+
+  <div id="wrapper" >
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:750px;">
+      <div  id="dataEntries" width="550">
+
+<br/>
+&nbsp;This module computes the reflection coefficients, transmission
+coefficients, reflectivities and transmissivities for incidence in
+medium 1 upon the planar boundary of a lossless or lossy
+medium (medium 2) at any incidence angle, for both h and v
+polarizations.
+<br/>
+&nbsp;
+<span xml:lang="el" lang="el">ϵ</span><sub>1</sub>=
+<span xml:lang="el" lang="el">ϵ</span><sub>1</sub>' -j 
+<span xml:lang="el" lang="el">ϵ</span><sub>1</sub>''
+<br/>
+&nbsp;
+<span xml:lang="el" lang="el">ϵ</span><sub>2</sub>=
+<span xml:lang="el" lang="el">ϵ</span><sub>2</sub>' -j 
+<span xml:lang="el" lang="el">ϵ</span><sub>2</sub>''
+
+<br/>
+<br/>
+<!--
+&nbsp;matlab
+code: <a href="../combined_codes/module2_3.m">module2_3.m</a>
+-->
+<br/>
+
+<center>
+<img src="2-14.jpg" alt="" width=300>
+</center>
+
+<div id="form">
+   <br>
+<span>&nbsp;Real Part: <span xml:lang="el" lang="el">ϵ</span><sub>1</sub>':  </span>
+&nbsp;&nbsp;&nbsp;<div id="slider1" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="real_eps1" name="real_eps1Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Imag Part: <span xml:lang="el" lang="el">ϵ</span><sub>1</sub>'':  </span>
+&nbsp;<div id="slider2" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="imag_eps1" name="imag_eps1Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Real Part: <span xml:lang="el" lang="el">ϵ</span><sub>2</sub>':  </span>
+&nbsp;&nbsp;&nbsp;<div id="slider3" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="real_eps2" name="real_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+   <span>&nbsp;Imag Part: <span xml:lang="el" lang="el">ϵ</span><sub>2</sub>'':  </span>
+&nbsp;<div id="slider4" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="imag_eps2" name="imag_eps2Val" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+<!-- filedset here -->
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:750px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle"></td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner" id="yAxisLabel"></div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule2_3" class="plot" style="width:500px;height:500px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Incidence Angle, Degrees</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          </tr>
+        <tr>
+          <td></td>
+          <td> 
+<br/>
+   <fieldset style="text-align:left;">
+<input name="quant" id="reflection_coeff" value="reflection_coeff" checked="checked" type="radio">
+   <label for="reflection_coeff">Plot reflection coefficient magnitude</label><br>
+   <input name="quant" id="reflectivity" value="reflectivity" type="radio">
+   <label for="reflectivity">Plot reflectivity</label><br>
+   <input name="quant" id="transmission_coeff" value="transmission_coeff" type="radio">
+   <label for="transmission_coeff">Plot transmission coefficient magnitude</label><br>
+   <input name="quant" id="transmissivity" value="transmissivity" type="radio">
+   <label for="transmissivity">Plot transmissivity</label><br>
+</fieldset>
+</td>
+          </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+</body>
+</html>

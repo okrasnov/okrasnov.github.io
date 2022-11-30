@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule8_5.js'></script>
+<script type='text/javascript' src='../math-complex.js'></script>
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+</style>
+<!-- #slider1 .ui-slider-handle { color:teal; border-color: teal; background:teal; } -->
+<!-- #slider1 .ui-slider-range { color:teal; border-color: teal; background:teal; } -->
+
+</head>
+
+<body>
+
+
+<div id="messages"></div>
+
+ <div style="font-size:large; padding-top:2px; padding-bottom:2px; width:1165px; border-style:solid; border-width:5px; border-color:blue">
+&nbsp; <strong>Code 8.5
+      <span style="color:red; float:right;">Ice Cloud Extinction Coefficient&nbsp;</span>
+
+</strong>
+</div>
+
+  <div id="wrapper" >
+    <div id="leftWrapper" style="padding-left:5px; border-style:solid; border-width:5px; border-color:blue; height:560px;">
+      <div  id="dataEntries" width="550">
+
+<br/>
+&nbsp;This module computes 
+extinction coefficient (scattering plus absorption) for an ice cloud at any frequency
+0 < f < 70 GHz, temperature -50C < t < 50C, and cloud water content 
+0 < m<sub>v</sub> < 5 g/m<sup>3</sup>.
+<br/>
+<br/>
+<br/>
+<!--
+&nbsp;matlab code: <a href="../combined_codes/module8_5.m">module8_5.m</a>
+-->
+
+<br/>
+<br/>
+
+<div id="form">
+   <br>
+<span>&nbsp;Cloud Water Content
+  (g/cm<sup>3</sup>):&nbsp;  </span>
+<div id="slider1" style="width:180px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="density" name="densityVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+   <br>
+   <br>
+<span>&nbsp;Temperature (C):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+<div id="slider3" style="width:180px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="temp" name="tempVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:75px" type="text">
+ <br><br>
+
+
+
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:560px; border-width:5px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle">Ice Cloud Extinction Coefficient</td>
+        </tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner"
+              id="yAxisLabel">Extinction Coefficient (dB/Km)</div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule8_5" class="plot" style="width:500px;height:500px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel">Frequency, GHz</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          </tr>
+
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+</body>
+</html>

@@ -4,25 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>Coloring of the mixture of 2D signals | OK&#39;s Blog</title>
+  <title>Colouring of the mixture of 2D signals | OK&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Sometimes it is necessary to make an image of the mixture 2D data using different PGB pallets for every component.For example, let create three 2D functions: for (ix&#x3D;1:100),      for (iy&#x3D;1:100),">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Coloring of the mixture of 2D signals">
+<meta property="og:title" content="Colouring of the mixture of 2D signals">
 <meta property="og:url" content="http://okrasnov.github.io/blog/posts/2022-10-04-post-1.html">
 <meta property="og:site_name" content="OK&#39;s Blog">
 <meta property="og:description" content="Sometimes it is necessary to make an image of the mixture 2D data using different PGB pallets for every component.For example, let create three 2D functions: for (ix&#x3D;1:100),      for (iy&#x3D;1:100),">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://okrasnov.github.io/images/2022-10-04-img01.jpg">
-<meta property="og:image" content="http://okrasnov.github.io/images/2022-10-04-img02.jpg">
-<meta property="og:image" content="http://okrasnov.github.io/images/2022-10-04-img03.jpg">
-<meta property="og:image" content="http://okrasnov.github.io/images/2022-10-04-img04.jpg">
+<meta property="og:image" content="http://okrasnov.github.io/blog/blog-imgs/2022-10-04-img01.jpg">
+<meta property="og:image" content="http://okrasnov.github.io/blog/blog-imgs/2022-10-04-img02.jpg">
+<meta property="og:image" content="http://okrasnov.github.io/blog/blog-imgs/2022-10-04-img03.jpg">
+<meta property="og:image" content="http://okrasnov.github.io/blog/blog-imgs/2022-10-04-img04.jpg">
 <meta property="article:published_time" content="2022-10-03T22:00:00.000Z">
-<meta property="article:modified_time" content="2022-12-01T16:22:47.421Z">
+<meta property="article:modified_time" content="2022-12-02T09:41:02.032Z">
 <meta property="article:author" content="OK">
 <meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://okrasnov.github.io/images/2022-10-04-img01.jpg">
+<meta name="twitter:image" content="http://okrasnov.github.io/blog/blog-imgs/2022-10-04-img01.jpg">
   
     <link rel="alternate" href="/blog/atom.xml" title="OK's Blog" type="application/atom+xml">
   
@@ -93,7 +93,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Coloring of the mixture of 2D signals
+      Colouring of the mixture of 2D signals
     </h1>
   
 
@@ -115,8 +115,8 @@ end;
 title(&#39;Image of the signals&#39;&#39; sum&#39;)
 </code></pre>
 <p>As result we will have the image of the mixture as a sum of all functions:</p>
-<p><img src="/images/2022-10-04-img01.jpg" alt="Image of the mixture as a sum">    </p>
-<p>We can see the total behavior of the functions sum but not every component. To keep that information is possible using by changing colour palettes for every component of the mixture. For example, we can use the blue pallete for the signal <em>z</em>, the gray palette for the signal <em>z1</em>, and yellow - - for the signal <em>z2</em>. For these we have to do following:</p>
+<p><img src="/blog/blog-imgs/2022-10-04-img01.jpg" alt="Image of the mixture as a sum">    </p>
+<p>We can see the total behaviour of the functions sum but not every component. To keep that information is possible using by changing colour palettes for every component of the mixture. For example, we can use the blue pallete for the signal <em>z</em>, the grey palette for the signal <em>z1</em>, and yellow - - for the signal <em>z2</em>. For these we have to do following:</p>
 <pre><code>q(:,:,1)=zeros(100,100);q(:,:,2)=zeros(100,100);
 q(:,:,3)=z;
 
@@ -130,7 +130,7 @@ figure;imagesc(q+q1+q12)
 title(&#39;black-based signals colouring: the sum&#39;)
 </code></pre>
 <p>The result will look as follow:</p>
-<p><img src="/images/2022-10-04-img02.jpg" alt="Image of the coloured mixture as signals with zeros as black"></p>
+<p><img src="/blog/blog-imgs/2022-10-04-img02.jpg" alt="Image of the coloured mixture as signals with zeros as black"></p>
 <p>Now we can see not only 2D variability of the mixture of functions, but clear recognize the values of every component. What still can be improved is to apply the negative grey palette, when the minimum is represented as white and maximum - as the black colour. Such inverted palette is much more suitable for printing and for insertion in publications.<br>It can be done using following codes:</p>
 <pre><code>z21=(max(max(z))-z)./max(max(max(z))-z);
 q21(:,:,1)=z21;q21(:,:,2)=z21;q21(:,:,3)=z21;
@@ -145,23 +145,23 @@ Q=(q21+q22+q23);
 Q=Q./max(max(Q));
 
 figure;imagesc(Q)
-title(&#39;white-based signals coloring: the sum with normalization&#39;)
+title(&#39;white-based signals colouring: the sum with normalization&#39;)
 </code></pre>
 <p>To extend every component visualization to the full scale of specific palette, we did the normalization of every function. As soon as the sum of functions cam be greater than 1 within the RGB components of the colours representation, the final sum <em>Q</em> was  also normalized using its maximum value (in general, the minimum value also has to be taken into account for such normalization).<br>The resulting image looks as follow:</p>
-<p><img src="/images/2022-10-04-img03.jpg" alt="Image of the coloured mixture as a sum signals with zeros as white"></p>
+<p><img src="/blog/blog-imgs/2022-10-04-img03.jpg" alt="Image of the coloured mixture as a sum signals with zeros as white"></p>
 <p>It can be seen that if to use for such representation the sum of RGB codes of signal components, the dynamic range of colour image is seriously reduced - red becomes light red, blue - light blue, black-dark grey - not much dark. It is defined by the necessity of the total scaling of the sum of individual RGB scales of components. To overcome such reduction of the final image RGB scale, instead of the sum can be used piecewise product of RGB coded components:</p>
 <pre><code>Q1=(q21.*q22.*q23);
 
 figure;imagesc(Q1)
 title(&#39;white-based signals colouring: the product&#39;)
 </code></pre>
-<p><img src="/images/2022-10-04-img04.jpg" alt="Image of the coloured mixture as a signals product with zeros as white"></p>
+<p><img src="/blog/blog-imgs/2022-10-04-img04.jpg" alt="Image of the coloured mixture as a signals product with zeros as white"></p>
 <p>In this case the final scaling is not necessary, and the dynamic range of the selected colours is much wider…</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://okrasnov.github.io/blog/posts/2022-10-04-post-1.html" data-id="clb55r2fp000b9sghgtrd59hl" data-title="Coloring of the mixture of 2D signals" class="article-share-link">Share</a>
+      <a data-url="http://okrasnov.github.io/blog/posts/2022-10-04-post-1.html" data-id="clb55r2fp000b9sghgtrd59hl" data-title="Colouring of the mixture of 2D signals" class="article-share-link">Share</a>
       
       
       
@@ -241,7 +241,7 @@ title(&#39;white-based signals colouring: the product&#39;)
           </li>
         
           <li>
-            <a href="/blog/posts/2022-10-04-post-1.html">Coloring of the mixture of 2D signals</a>
+            <a href="/blog/posts/2022-10-04-post-1.html">Colouring of the mixture of 2D signals</a>
           </li>
         
           <li>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+  <title>Home Page of Oleg Krasnov: Education activities - Microwave and 
+    Radiowave Propagation effects: JavaScript Interactive Demo Modules - 
+    Polarization ellipse of Partially-Polarized Wave </title>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule_ok_1.js'></script>
+
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+#slider4 .ui-slider-handle {  background:#00EEEE; }
+</style>
+
+
+</head>
+
+<body onLoad="doinits()">
+
+
+<div id="messages"></div>
+
+<div style="font-size:large; padding-top:2px; 
+padding-bottom:2px; width:1170px; border-style:solid; 
+border-width:3px; border-color:blue; alignment:center">
+&nbsp; <strong>Polarization of EM Waves
+<span style="color:red; float:right;">Polarization Ellipse of a Partially-Polarized EM Plane
+Wave Traveling in the +<i>z</i> Direction &nbsp;
+</strong>
+</div>
+
+ 
+  <div id="wrapper">
+    <div id="leftWrapper" style="padding-left:10px; padding-right:10px; border-style:solid; 
+             border-width:3px; border-color:blue; height:570px;">
+      <div id="dataEntries" width="550">
+<div id="form">
+<p align="justify">This module presents the position of the electric vector of partially-polarized 
+electromagnetic wave during the one period of oscillation when it is travelling 
+in the +<i>z</i> direction (out of the screen, to the observer). Such a wave can 
+be presented as a vector summation of fully polarized wave with controllable 
+parameters and completely non-polarized wave. The degree of polarization defined 
+as a ratio between total power of fully-polarized component to the total power of 
+the wave. If it equals to 0, the wave is completely non-polarized, as it equals 
+to 1 - the wave is fully polarized with parameters of the polarization ellips (orientation 
+and ellipticity angles) that are also shown above the plot. Bsed of settings the coherency 
+matrix of the wave is also calculated and shown below.
+
+<h3>Fully polarized component parameters:</h3>
+
+<span>&nbsp;Amplitude of <i>E<sub>x</sub></i>:  </span>
+<div id="slider1" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<input id="ex" name="exVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+ <br><br>
+
+   <span>&nbsp;Amplitude of <i>E<sub>y</sub></i>:  </span>
+<div id="slider2" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<input id="ey" name="eyVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+ <br><br>
+
+   <span>&nbsp;Phase difference
+   (<i><span class="Unicode">ϕ</span></i><sub>y</sub>-<i><span class="Unicode">ϕ</span></i><sub>x</sub>):  </span>
+<div id="slider3" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="dphi" name="dphiVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+deg
+
+<br/><br/>
+
+<h3>Relation between polarized and non-polarized components:</h3>
+
+  <span>&nbsp;Degree of polarization
+    (<i><span class="Unicode">DoP</span></i>):  </span>
+ <div id="slider4" style="width:190px; display:inline-block;"></div>
+ &nbsp;&nbsp;&nbsp;&nbsp;<input id="iDoP" name="iDoPVal" style="border: 2;border-style: inset;
+                                         background-color:#EEEEEE;
+                                         width:50px" type="text">
+<h3>The coherency matrix:</h3>
+<table style="text-align:center">
+  <tbody>
+
+   <tr><td><div id="iJxx"></div></td> <td><div id="iJxy"></div></td></tr>
+   <tr><td><div id="iJyx"></div></td> <td><div id="iJyy"></div></td></tr>
+  </tbody></table>
+ <!--<p id="iText"></p>-->
+ 
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:570px; border-width:3px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle">Polarization Ellipse</td>
+        </tr>
+         <tr> 	  <th></th> <td><div id="text1"></div> </td></tr>
+          <tr> 	  <th></th> <td><div id="text2"></div> </td></tr>
+          <tr> 	  <th></th> <td><div id="text3"></div> </td></tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner" id="yAxisLabel"><i>E</i><sub>y</sub></div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule_ok_1" class="plot" style="width:450px;height:450px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel"><i>E<sub>x</sub></i></td>
+        </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+<p>
+    <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=dpb07gH8rZQPzO8RPOOgncUeSdIRkbk1gwmedpeWwPo&cl=ffffff&w=a"></script>
+</p>
+    
+
+</body>
+</html>

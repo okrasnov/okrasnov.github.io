@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+  <meta content='utf-8' http-equiv='encoding'>
+  <title>Home Page of Oleg Krasnov: Education activities - Microwave and 
+    Radiowave Propagation effects: JavaScript Interactive Demo Modules - 
+    Polarization ellipse of Partially-Polarized Wave </title>
+
+<link rel='stylesheet' href='../jquery-ui-1.9.0.custom.min.css' />
+<link rel='stylesheet' href='../plot.css' />
+
+<script type='text/javascript' src='../jquery-1.8.2.min.js'></script>
+<script type='text/javascript' src='../jquery-ui-1.9.0.custom.min.js'></script>
+<script type='text/javascript' src='../complex.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js'></script>
+<script type='text/javascript' src='plotLibrary.js'></script>
+<script type='text/javascript' src='../jquery.flot.min.js'></script>
+<script type='text/javascript' src='widgetsModule_ok_2.js'></script>
+
+<style>
+#slider1 .ui-slider-handle {  background:#00EEEE; }
+#slider2 .ui-slider-handle {  background:#00EEEE; }
+#slider3 .ui-slider-handle {  background:#00EEEE; }
+</style>
+
+
+</head>
+
+<body onLoad="doinits()">
+
+
+<div id="messages"></div>
+
+<div style="font-size:large; padding-top:2px; 
+padding-bottom:2px; width:1170px; border-style:solid; 
+border-width:3px; border-color:blue; alignment:center">
+&nbsp; <strong>Polarization of EM Waves
+<span style="color:red; float:right;">Polarization Pattern of EMW measured 
+  with rotated linearly-polarized antenna &nbsp;
+</strong>
+</div>
+
+ 
+  <div id="wrapper">
+    <div id="leftWrapper" style="padding-left:10px; padding-right:10px; border-style:solid; 
+             border-width:3px; border-color:blue; height:570px;">
+      <div id="dataEntries" width="550">
+<div id="form">
+<p align="justify">This module presents the polarization pattern, which can be observed 
+  when the arbitrary polarized EM wave interact with rotating linearly polarized antenna.
+  This pattern shows the received power as a function of the mutual orientation angle of
+  the linearly-polarized received antenna and the arbitrary polarized incomming wave.
+
+<h3>Parameters of the incoming wave:</h3>
+
+<span>&nbsp;Amplitude of <i>E<sub>x</sub></i>:  </span>
+<div id="slider1" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<input id="ex" name="exVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+ <br><br>
+
+   <span>&nbsp;Amplitude of <i>E<sub>y</sub></i>:  </span>
+<div id="slider2" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;&nbsp;&nbsp;<input id="ey" name="eyVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+ <br><br>
+
+   <span>&nbsp;Phase difference
+   (<i><span class="Unicode">ϕ</span></i><sub>y</sub>-<i><span class="Unicode">ϕ</span></i><sub>x</sub>):  </span>
+<div id="slider3" style="width:230px; display:inline-block;"></div>
+&nbsp;&nbsp;<input id="dphi" name="dphiVal" style="border: 2;border-style: inset;
+                                        background-color:#EEEEEE;
+                                        width:50px" type="text">
+deg
+
+<br/><br/>
+
+ <!--<p id="iText"></p>-->
+ 
+</div></div>
+    </div>
+    <div id="rightWrapper" style="border-style:solid; height:570px; border-width:3px; border-color:blue">
+
+      <!-- Here's the table: will just DELETE it for the case of
+           matlab-generated plots, since will already have built-in
+           labels -->
+      <table style="text-align:center">
+        <tbody><tr>
+	  <th></th>
+	  <td id="plotTitle">Polarization Pattern</td>
+        </tr>
+         <tr> 	  <th></th> <td><div id="text1"></div> </td></tr>
+          <tr> 	  <th></th> <td><div id="text2"></div> </td></tr>
+          <tr> 	  <th></th> <td><div id="text3"></div> </td></tr>
+        <tr>
+	  <th><div class="vertical-text">
+              <div class="vertical-text__inner" id="yAxisLabel"><i>E</i><sub>y</sub></div>
+              </div>
+          </th>
+	  <td>
+            <div id="plotModule_ok_2" class="plot" style="width:450px;height:450px"></div>
+          </td>
+        </tr>
+        <tr>
+	  <th></th>
+	  <td id="xAxisLabel"><i>E<sub>x</sub></i></td>
+        </tr>
+      </tbody></table>
+
+
+      <!-- This is where the plot will go for matlab-generated plots.
+           This line will be DELETED for the case of jquery-generated
+           plots, since will need the table (above) instead, to have
+           axis and header labels -->
+      
+    </div>
+  </div>
+
+
+<br/>Note: Once selected, the right and left arrow-keys can be used to move
+  the sliders.
+
+    
+
+</body>
+</html>

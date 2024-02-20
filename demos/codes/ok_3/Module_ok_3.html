@@ -16,6 +16,13 @@
 <script type='text/javascript' src='../jquery.flot.min.js'></script>
 <script type='text/javascript' src='widgetsModule_ok_3.js'></script>
 
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
 <style>
 #slider1 .ui-slider-handle {  background:#00EEEE; }
 #slider2 .ui-slider-handle {  background:#00EEEE; }
@@ -28,7 +35,6 @@
 </head>
 
 <body onLoad="doinits()">
-
 
 <div id="messages"></div>
 
@@ -48,25 +54,33 @@ border-width:3px; border-color:blue; alignment:center">
 <div id="form">
 <p align="justify">This module presents the representation of the arbitrary 
   fully polarized electromagnetic wave in different polarization basis: <br/>
-  <center><em>
-  E = E<sub>1</sub> e<sub>1</sub>(theta,tau) + E<sub>2</sub> e<sub>2</sub>(theta+pi/2,-tau)
-</em></center><br/>
- where E is the wave with arbitrary polarization, <em>E<sub>1</sub></em> - coplex amplitude 
- of the ortihogonal polarization basis component's <em>e<sub>1</sub>(theta,tau)</em>, 
-<em>E<sub>2</sub></em> - coplex amplitude of the ortihogonal polarization basis 
- orthogonal component's <em>e<sub>2</sub>(theta+pi/2,-tau)</em>. Here '<em>theta</em>' is the 
+
+    \begin{eqnarray}
+    {\bf{\dot E}} = {\dot E}_1 {\dot {\bf{e}}}_1(\theta,\tau) + {\dot E}_2 {\dot {\bf{e}}}_2(\theta+\pi/2, -\tau)
+    \end{eqnarray}
+ 
+ where $\bf{\dot E}$ is the wave with arbitrary polarization (blue), 
+ $\dot E_1$ - coplex amplitude of the ortihogonal polarization basis 
+ component's ${\dot {\bf{e}}}_1(\theta,\tau)$ (red), 
+${\dot E}_2$ - coplex amplitude of the ortihogonal polarization basis 
+ orthogonal component's ${\dot {\bf{e}}}_2(\theta+\pi/2, -\tau)$ (magenta). Here $\theta$ is the 
  angle of orientation of one elliptical component of polarization basis, which 
- has the ellipticity angle '<em>tau</em>'.
+ has the ellipticity angle $\tau$. In the polarization basis $(\theta, \tau)$ the 
+ Jones vector of the wave can be written:
+$ {\bf{\dot E}} = \left[ {\begin{array}{*{20}{c}}
+{{E_1}{e^{j{\phi _1}}}}\\
+{{E_2}{e^{j{\phi _2}}}}
+\end{array}} \right] $
  
  <h3>Polarization basis parameters:</h3>
 
- <span>&nbsp;Orientation angle 'theta', degrees:  </span>
+ <span>&nbsp;Orientation angle $\theta$, degrees:  </span>
 <div id="slider_theta" style="width:230px; display:inline-block;"></div>
 &nbsp;&nbsp;<input id="theta" name="thetaVal" style="border: 2;border-style: inset;
                                        background-color:#EEEEEE;
                                        width:50px" type="text">
  <br><br>
- <span>&nbsp;Ellipticity angle 'tau', degrees:  </span>
+ <span>&nbsp;Ellipticity angle $\tau$, degrees:  </span>
 <div id="slider_tau" style="width:230px; display:inline-block;"></div>
 &nbsp;&nbsp;<input id="tau" name="tauVal" style="border: 2;border-style: inset;
                                        background-color:#EEEEEE;
@@ -74,14 +88,14 @@ border-width:3px; border-color:blue; alignment:center">
  <br><br> 
 <h3>Polarization components parameters:</h3>
 
-<span>&nbsp;Amplitude of <i>E<sub>1</sub></i>:  </span>
+<span>&nbsp;Amplitude of $\dot E_1$:  </span>
 <div id="slider1" style="width:230px; display:inline-block;"></div>
 &nbsp;&nbsp;&nbsp;&nbsp;<input id="e1" name="e1Val" style="border: 2;border-style: inset;
                                         background-color:#EEEEEE;
                                         width:50px" type="text">
  <br><br>
 
-   <span>&nbsp;Amplitude of <i>E<sub>2</sub></i>:  </span>
+   <span>&nbsp;Amplitude of $\dot E_2$:  </span>
 <div id="slider2" style="width:230px; display:inline-block;"></div>
 &nbsp;&nbsp;&nbsp;&nbsp;<input id="e2" name="e2Val" style="border: 2;border-style: inset;
                                         background-color:#EEEEEE;

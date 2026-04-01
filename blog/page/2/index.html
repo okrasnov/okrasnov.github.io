@@ -71,10 +71,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2022-10-07-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-2024-07-10-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/posts/2022-10-07-post-1.html" class="article-date">
-  <time class="dt-published" datetime="2022-10-06T22:00:00.000Z" itemprop="datePublished">2022-10-07</time>
+    <a href="/blog/posts/2024-07-10-post-1.html" class="article-date">
+  <time class="dt-published" datetime="2024-07-10T15:47:26.000Z" itemprop="datePublished">2024-07-10</time>
 </a>
     
   </div>
@@ -85,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/posts/2022-10-07-post-1.html">What CEOs talked about in Q3/2022</a>
+      <a class="p-name article-title" href="/blog/posts/2024-07-10-post-1.html">IGARSS-2024, Athene</a>
     </h1>
   
 
@@ -93,199 +93,22 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><img src="/blog/blog-imgs/What-CEOs-talked-about-in-Q3-2022-vs-Q2-2022-vf.png" alt="What CEOs talked about in Q3/2022: Economic slowdown, raw materials, and Industry 4.0"></p>
-<p><a target="_blank" rel="noopener" href="https://iot-analytics.com/what-ceos-talked-about-q3-2022">What CEOs talked about in Q3&#x2F;2022: Economic slowdown, raw materials, and Industry 4.0</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://okrasnov.github.io/blog/posts/2022-10-07-post-1.html" data-id="cmng5p9370008uughfjf075vi" data-title="What CEOs talked about in Q3/2022" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/topics/" rel="tag">topics</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2022-10-04-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/posts/2022-10-04-post-1.html" class="article-date">
-  <time class="dt-published" datetime="2022-10-03T22:00:00.000Z" itemprop="datePublished">2022-10-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/posts/2022-10-04-post-1.html">Colouring of the mixture of 2D signals</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Sometimes it is necessary to make an image of the mixture 2D data using different PGB pallets for every component.<br>For example, let create three 2D functions:</p>
-<pre><code>for (ix=1:100), 
-    for (iy=1:100), 
-        z(ix,iy)= exp(-(ix-30).^2./500).*exp(-(iy-30).^2./500);
-        z1(ix,iy)=exp(-(ix-50).^2./300).*exp(-(iy-50).^2./900);
-        z2(ix,iy)=exp(-(ix-80).^2./350).*exp(-(iy-80).^2./50);
-    end;
-end;
-</code></pre>
-<p>We can easily make an image of the resulting mixture of these function:</p>
-<pre><code>figure;imagesc(z+z1+z2)
-title(&#39;Image of the signals&#39;&#39; sum&#39;)
-</code></pre>
-<p>As result we will have the image of the mixture as a sum of all functions:</p>
-<p><img src="/blog/blog-imgs/2022-10-04-img01.jpg" alt="Image of the mixture as a sum">    </p>
-<p>We can see the total behaviour of the functions sum but not every component. To keep that information is possible using by changing colour palettes for every component of the mixture. For example, we can use the blue pallete for the signal <em>z</em>, the grey palette for the signal <em>z1</em>, and yellow - - for the signal <em>z2</em>. For these we have to do following:</p>
-<pre><code>q(:,:,1)=zeros(100,100);q(:,:,2)=zeros(100,100);
-q(:,:,3)=z;
-
-q1(:,:,1)=z1;q1(:,:,2)=z1;q1(:,:,3)=z1;
-
-q12(:,:,1)=z2;
-q12(:,:,2)=z2;
-q12(:,:,3)=zeros(100,100);
-
-figure;imagesc(q+q1+q12)
-title(&#39;black-based signals colouring: the sum&#39;)
-</code></pre>
-<p>The result will look as follow:</p>
-<p><img src="/blog/blog-imgs/2022-10-04-img02.jpg" alt="Image of the coloured mixture as signals with zeros as black"></p>
-<p>Now we can see not only 2D variability of the mixture of functions, but clear recognize the values of every component. What still can be improved is to apply the negative grey palette, when the minimum is represented as white and maximum - as the black colour. Such inverted palette is much more suitable for printing and for insertion in publications.<br>It can be done using following codes:</p>
-<pre><code>z21=(max(max(z))-z)./max(max(max(z))-z);
-q21(:,:,1)=z21;q21(:,:,2)=z21;q21(:,:,3)=z21;
-
-z22=(max(max(z1))-z1)./max(max(max(z1))-z1);
-q22(:,:,1)=ones(100,100);q22(:,:,2)=z22;q22(:,:,3)=z22;
-
-z23=(max(max(z2))-z2)./max(max(max(z2))-z2);
-q23(:,:,1)=z23; q23(:,:,2)=z23; q23(:,:,3)=ones(100,100);
-
-Q=(q21+q22+q23);
-Q=Q./max(max(Q));
-
-figure;imagesc(Q)
-title(&#39;white-based signals colouring: the sum with normalization&#39;)
-</code></pre>
-<p>To extend every component visualization to the full scale of specific palette, we did the normalization of every function. As soon as the sum of functions cam be greater than 1 within the RGB components of the colours representation, the final sum <em>Q</em> was  also normalized using its maximum value (in general, the minimum value also has to be taken into account for such normalization).<br>The resulting image looks as follow:</p>
-<p><img src="/blog/blog-imgs/2022-10-04-img03.jpg" alt="Image of the coloured mixture as a sum signals with zeros as white"></p>
-<p>It can be seen that if to use for such representation the sum of RGB codes of signal components, the dynamic range of colour image is seriously reduced - red becomes light red, blue - light blue, black-dark grey - not much dark. It is defined by the necessity of the total scaling of the sum of individual RGB scales of components. To overcome such reduction of the final image RGB scale, instead of the sum can be used piecewise product of RGB coded components:</p>
-<pre><code>Q1=(q21.*q22.*q23);
-
-figure;imagesc(Q1)
-title(&#39;white-based signals colouring: the product&#39;)
-</code></pre>
-<p><img src="/blog/blog-imgs/2022-10-04-img04.jpg" alt="Image of the coloured mixture as a signals product with zeros as white"></p>
-<p>In this case the final scaling is not necessary, and the dynamic range of the selected colours is much wider…</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://okrasnov.github.io/blog/posts/2022-10-04-post-1.html" data-id="cmng5p9360005uugh5w2m85tr" data-title="Colouring of the mixture of 2D signals" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Matlab/" rel="tag">Matlab</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2022-09-05-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/posts/2022-09-05-post-1.html" class="article-date">
-  <time class="dt-published" datetime="2022-09-04T22:00:00.000Z" itemprop="datePublished">2022-09-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/posts/2022-09-05-post-1.html">The First Rule of Machine Learning</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://applyingml.com/resources/first-rule-of-ml/">The First Rule of Machine Learning - Start without machine learning</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://okrasnov.github.io/blog/posts/2022-09-05-post-1.html" data-id="cmng5p9360007uughdqjp11jm" data-title="The First Rule of Machine Learning" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/machine-learning/" rel="tag">machine learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2022-07-14-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/posts/2022-07-14-post-1.html" class="article-date">
-  <time class="dt-published" datetime="2022-07-13T22:00:00.000Z" itemprop="datePublished">2022-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/posts/2022-07-14-post-1.html">Space objects orbit parameters (TLE files)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><a target="_blank" rel="noopener" href="http://www.ne.jp/asahi/hamradio/je9pel/sunpstle.htm">SUN and MOON pseudo TLE</a></li>
-<li><a target="_blank" rel="noopener" href="https://celestrak.org/NORAD/elements/">NORAD GP Element Sets - Current Data</a></li>
+        <p><img src="/blog/blog-imgs/igarss.png">  </p>
+<p>With Felix Yanovsky and Sebastian Torres we organized the special session “Signal and Data Processing in Atmosphere Remote Sensing I”, where presented with Tworit two papers:</p>
+<ul>
+<li>Pinsky, M., Krasnov, O., Khain, A., Khain, P. “Retrieval of the convective clouds turbulence structure using high-resolution vertically pointed Doppler radar data” - <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/10642343">DOI</a></li>
+<li>Dash, T., Wenyi Lu, O. A. Krasnov and A. Yarovoy, “Detection of Precipitation Using Scanning Radars with Strong Sectorial Interferences” - <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/10642725">DOI</a></li>
 </ul>
-<hr>
+<p><img src="/blog/blog-imgs/athene.jpg" alt="The Runner in Athens, Greece">  </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://okrasnov.github.io/blog/posts/2022-07-14-post-1.html" data-id="cmng5p9350004uughdjenbc07" data-title="Space objects orbit parameters (TLE files)" class="article-share-link">Share</a>
+      <a data-url="http://okrasnov.github.io/blog/posts/2024-07-10-post-1.html" data-id="cmng89c4v000015gh09v2fjtp" data-title="IGARSS-2024, Athene" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/TLE-elements/" rel="tag">TLE elements</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/space/" rel="tag">space</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/conferences/" rel="tag">conferences</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/personal/" rel="tag">personal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/publications/" rel="tag">publications</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/travels/" rel="tag">travels</a></li></ul>
 
     </footer>
   </div>
@@ -295,10 +118,10 @@ title(&#39;white-based signals colouring: the product&#39;)
 
 
   
-    <article id="post-2022-01-07-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-2023-12-13-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/posts/2022-01-07-post-1.html" class="article-date">
-  <time class="dt-published" datetime="2022-01-06T23:00:00.000Z" itemprop="datePublished">2022-01-07</time>
+    <a href="/blog/2023/12/13/2023-12-13-post-1/" class="article-date">
+  <time class="dt-published" datetime="2023-12-13T17:12:24.000Z" itemprop="datePublished">2023-12-13</time>
 </a>
     
   </div>
@@ -309,7 +132,7 @@ title(&#39;white-based signals colouring: the product&#39;)
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/posts/2022-01-07-post-1.html">What CEOs talked about in Q4/2021</a>
+      <a class="p-name article-title" href="/blog/2023/12/13/2023-12-13-post-1/">Forward Model of Radar Signals in the Distributed Radar System</a>
     </h1>
   
 
@@ -317,16 +140,155 @@ title(&#39;white-based signals colouring: the product&#39;)
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><img src="/blog/blog-imgs/What-CEOs-talked-about-q4-2021-vs-q3-2021-min.png" alt="What-CEOs-talked-about-q4-2021-vs-q3-2021"></p>
+        <p>Finally, decided to published on the GitHub my radar network simulator, which where developed back to 2012…</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/okrasnov/RadarNet-FWM">RadarNet-FWM: Forward Model of Radar Signals in the Distributed Radar System</a></p>
+<p>It is a simple MATLAB simulator of the set of non-directive radars that are working simultaneously but independently and observes the same set of targets. The simulator generates a timeline of coherently processed bursts of sensing waveforms with specified parameters, which are presented as a set of received signals on the range-Doppler plane.  </p>
+<p><img src="/blog/blog-imgs/2023-12-13.png" alt="The slide with the model&#39;s concept explanation">  </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://okrasnov.github.io/blog/posts/2022-01-07-post-1.html" data-id="cmng5p9330001uughes8m7xqn" data-title="What CEOs talked about in Q4/2021" class="article-share-link">Share</a>
+      <a data-url="http://okrasnov.github.io/blog/2023/12/13/2023-12-13-post-1/" data-id="cmng97j640000p3gh2tlfbqbv" data-title="Forward Model of Radar Signals in the Distributed Radar System" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/topics/" rel="tag">topics</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Matlab/" rel="tag">Matlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/personal/" rel="tag">personal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/radar/" rel="tag">radar</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2023-03-24-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/posts/2023-03-24-post-1.html" class="article-date">
+  <time class="dt-published" datetime="2023-03-24T16:20:00.000Z" itemprop="datePublished">2023-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/posts/2023-03-24-post-1.html">Ukraine: An active associated country in H2020 and Horizon Europe</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="/blog/blog-imgs/Horizon-2020.jpg" alt="H2020 and Horizon Europe"></p>
+<p><a target="_blank" rel="noopener" href="https://efmc.eu/ukraine-an-active-associated-country-in-h2020-and-horizon-europe/">Ukraine: An active associated country in H2020 and Horizon Europe</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://okrasnov.github.io/blog/posts/2023-03-24-post-1.html" data-id="cmng5p938000duugh78k5cyp5" data-title="Ukraine: An active associated country in H2020 and Horizon Europe" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/UA/" rel="tag">UA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/funding/" rel="tag">funding</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2023-03-08-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/posts/2023-03-08-post-1.html" class="article-date">
+  <time class="dt-published" datetime="2023-03-07T23:00:00.000Z" itemprop="datePublished">2023-03-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/posts/2023-03-08-post-1.html">EchoDyne&#39;s Counter-UAV Radars</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>This morning the LinkedIn brought an interesting photo of a small radar for drones detection:</p>
+<p><img src="/blog/blog-imgs/EchoDyne-radar-1.jpg" alt="The value of Echodyne radars cannot be understated. A compact unit, this system capable of accurately detecting, classifying, and tracking aircraft in its immediate vicinity. This system is optimal for teams needing a portable unit to watch over specific locations like public events."></p>
+<p>It is developed by the <a target="_blank" rel="noopener" href="https://www.echodyne.com/">Echodyne company</a>. This small, tablet-sized radar provides  precise 3D coordinates with fast update rate, has impressive characteristics, the promised easy-to-use APIs, flexible embedded software, and multiple data output options. It also has quite impressive capability for tracking drones at short ranges:</p>
+<p><img src="/blog/blog-imgs/Echodyne-radar-2.png" alt="Echodyne radar tracking ranges for air targets"></p>
+<p>It also can be used even for weapon control at last stages:</p>
+<p><img src="/blog/blog-imgs/Echodyne-radar-3.png" alt="EchoGuard radar control the gun"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://okrasnov.github.io/blog/posts/2023-03-08-post-1.html" data-id="cmng5p9370009uugh6l8tdgo3" data-title="EchoDyne&#39;s Counter-UAV Radars" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/UAV/" rel="tag">UAV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/drones/" rel="tag">drones</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/radar/" rel="tag">radar</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2022-12-14-post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/posts/2022-12-14-post-1.html" class="article-date">
+  <time class="dt-published" datetime="2022-12-14T17:55:52.000Z" itemprop="datePublished">2022-12-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/posts/2022-12-14-post-1.html">The radio wave propagation within the surface duct and the sinking of the Russian Black Sea Fleet cruiser Moskva</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Accordingly to <a target="_blank" rel="noopener" href="https://www.forbes.com/sites/davidaxe/2022/12/13/an-atmospheric-trick-helped-a-ukrainian-missile-battery-find-and-sink-the-russian-cruiser-moskva/?sh=7b4c962b46cf">the recent publication in <em>Forbes</em></a>, in days and weeks after a Ukrainian navy anti-ship missile battery sank the Russian Black Sea Fleet cruiser <em>Moskva</em> on April 13, a lot of rumors circulated. Many of them attempted to explain how the Ukrainian navy, which does not have big ships or aircraft, could defeat a navy with lots of big and heavily - armed - vessels and planes. Some of the rumors hinged on the assumption that the Ukrainians required foreign help in order to strike Moskva.</p>
+<p>But according to the cited in <em>Forbes</em> an eyebrow-raising new story in <a target="_blank" rel="noopener" href="https://www.pravda.com.ua/rus/articles/2022/12/13/7380452/"><em>Ukrainska Pravda</em></a>, the Neptune battery — a quad launcher and its associated radar — found and hit Moskva mostly on its own. The assistance the battery did receive from an atmospheric phenomenon called “temperature inversion” created a kind of channel for radar waves that allowed them to travel over the curve of the horizon and back.</p>
+<p>Using the <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cpc.2020.107454">PETOOL</a> <a target="_blank" rel="noopener" href="https://mathworks.com/">Matlab</a> package it is quite easy to visualize the standard situation of radar signals propagation above the sea surface. In standard situation that most often takes place during the spring in the Black Sea regions, the propagation factor (it is the factor that shows the value of attenuation of the transmitted signal that approaches a specific location and reflected back to the radar) is shown in Figure 1 using the logarithmic (decibels) scale.</p>
+<p><img src="/blog/blog-imgs/2022-12-14-img01.jpg" alt="Figure 1. The radio waves propagation factor in case of radar antenna installed at the height 3 m in a standard atmospheric conditions.)"></p>
+<p>Clear, that the strong attenuation (around 150 dB, 15 orders of power loss) of the signals from the ship that was at that time well below the radio-horizon, at the 120 km distance from the radar position, did not give a possibility to detect and track it, making impossible the operation of the Neptune battery.</p>
+<p>But in the case of mentioned above “temperature inversion” the profile of the refractive index of atmosphere has very specific shape that radio-engineers called as the “surface duct”. In that case radio waves are propagating as in a waveguide for much longer distances. In this case the propagation factor looks quite different from the case of standard atmospheric conditions - see Figure 2. </p>
+<p><img src="/blog/blog-imgs/2022-12-14-img02.jpg" alt="Figure 2. The radio waves propagation factor in case of a radar antenna installed at the height 3 m in a &quot;surface duct&quot; conditions (the height of the inverse layer in this case equals to 20 m)."></p>
+<p>We see that inside the surface duct radar signal propagates between surface and upper limit of the inversion layer practically without serious attenuation. In such a case the huge ship at the distance of 120 km, well behind the radio-horizon, can be easily detected and destroyed using guided missiles. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://okrasnov.github.io/blog/posts/2022-12-14-post-1.html" data-id="cmng5p938000fuughhefl0ptp" data-title="The radio wave propagation within the surface duct and the sinking of the Russian Black Sea Fleet cruiser Moskva" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/UA/" rel="tag">UA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/radio-wave-propagation/" rel="tag">radio wave propagation</a></li></ul>
 
     </footer>
   </div>
@@ -340,7 +302,7 @@ title(&#39;white-based signals colouring: the product&#39;)
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -354,7 +316,7 @@ title(&#39;white-based signals colouring: the product&#39;)
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/TLE-elements/" rel="tag">TLE elements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/TU-Delft/" rel="tag">TU Delft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/UA/" rel="tag">UA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/UAV/" rel="tag">UAV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/drones/" rel="tag">drones</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/funding/" rel="tag">funding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/machine-learning/" rel="tag">machine learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/publications/" rel="tag">publications</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/radar/" rel="tag">radar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/radio-wave-propagation/" rel="tag">radio wave propagation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/space/" rel="tag">space</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/topics/" rel="tag">topics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/web/" rel="tag">web</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Matlab/" rel="tag">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/TLE-elements/" rel="tag">TLE elements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/TU-Delft/" rel="tag">TU Delft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/UA/" rel="tag">UA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/UAV/" rel="tag">UAV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/conferences/" rel="tag">conferences</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/drones/" rel="tag">drones</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/funding/" rel="tag">funding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/machine-learning/" rel="tag">machine learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/personal/" rel="tag">personal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/publications/" rel="tag">publications</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/radar/" rel="tag">radar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/radio-wave-propagation/" rel="tag">radio wave propagation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/space/" rel="tag">space</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/topics/" rel="tag">topics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/travels/" rel="tag">travels</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/web/" rel="tag">web</a></li></ul>
     </div>
   </div>
 
@@ -364,7 +326,7 @@ title(&#39;white-based signals colouring: the product&#39;)
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/blog/tags/TLE-elements/" style="font-size: 10px;">TLE elements</a> <a href="/blog/tags/TU-Delft/" style="font-size: 10px;">TU Delft</a> <a href="/blog/tags/UA/" style="font-size: 20px;">UA</a> <a href="/blog/tags/UAV/" style="font-size: 20px;">UAV</a> <a href="/blog/tags/drones/" style="font-size: 20px;">drones</a> <a href="/blog/tags/funding/" style="font-size: 10px;">funding</a> <a href="/blog/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/blog/tags/publications/" style="font-size: 10px;">publications</a> <a href="/blog/tags/radar/" style="font-size: 20px;">radar</a> <a href="/blog/tags/radio-wave-propagation/" style="font-size: 10px;">radio wave propagation</a> <a href="/blog/tags/space/" style="font-size: 10px;">space</a> <a href="/blog/tags/topics/" style="font-size: 20px;">topics</a> <a href="/blog/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/blog/tags/Matlab/" style="font-size: 13.33px;">Matlab</a> <a href="/blog/tags/TLE-elements/" style="font-size: 10px;">TLE elements</a> <a href="/blog/tags/TU-Delft/" style="font-size: 13.33px;">TU Delft</a> <a href="/blog/tags/UA/" style="font-size: 13.33px;">UA</a> <a href="/blog/tags/UAV/" style="font-size: 13.33px;">UAV</a> <a href="/blog/tags/conferences/" style="font-size: 10px;">conferences</a> <a href="/blog/tags/drones/" style="font-size: 13.33px;">drones</a> <a href="/blog/tags/funding/" style="font-size: 10px;">funding</a> <a href="/blog/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/blog/tags/personal/" style="font-size: 20px;">personal</a> <a href="/blog/tags/publications/" style="font-size: 16.67px;">publications</a> <a href="/blog/tags/radar/" style="font-size: 16.67px;">radar</a> <a href="/blog/tags/radio-wave-propagation/" style="font-size: 10px;">radio wave propagation</a> <a href="/blog/tags/space/" style="font-size: 10px;">space</a> <a href="/blog/tags/topics/" style="font-size: 13.33px;">topics</a> <a href="/blog/tags/travels/" style="font-size: 10px;">travels</a> <a href="/blog/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -373,7 +335,7 @@ title(&#39;white-based signals colouring: the product&#39;)
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/01/">January 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/01/">January 2022</a></li></ul>
     </div>
   </div>
 
@@ -386,23 +348,23 @@ title(&#39;white-based signals colouring: the product&#39;)
       <ul>
         
           <li>
-            <a href="/blog/2024/09/12/2024-09-12-post-1/">Our new article</a>
+            <a href="/blog/posts/2025-04-16-post-1.html">One more...</a>
           </li>
         
           <li>
-            <a href="/blog/posts/2023-03-24-post-1.html">Ukraine: An active associated country in H2020 and Horizon Europe</a>
+            <a href="/blog/posts/2025-02-24-post-1.html">Tworit&#39;s defence</a>
           </li>
         
           <li>
-            <a href="/blog/posts/2023-03-08-post-1.html">EchoDyne&#39;s Counter-UAV Radars</a>
+            <a href="/blog/posts/2024-12-19-post-1.html">And another one...</a>
           </li>
         
           <li>
-            <a href="/blog/posts/2022-12-14-post-1.html">The radio wave propagation within the surface duct and the sinking of the Russian Black Sea Fleet cruiser Moskva</a>
+            <a href="/blog/posts/2024-09-12-post-1.html">Our new article</a>
           </li>
         
           <li>
-            <a href="/blog/posts/2022-12-02-post-1.html">news</a>
+            <a href="/blog/posts/2024-08-29-post-1.html">New page of my life...</a>
           </li>
         
       </ul>
